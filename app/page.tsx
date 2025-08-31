@@ -121,8 +121,7 @@ export default function HomePage() {
             <div className="flex flex-col gap-6 justify-center text-zinc-50 sm:flex-row bg-transparent">
               <Button
                 size="lg"
-                className="btn-primary text-lg px-10 py-4 magnetic-hover shimmer-effect fluid-animate opacity-0 translate-y-[20px] stagger-5 transition-all duration-400 group"
-              >
+                className="btn-primary text-lg px-10 py-4 magnetic-hover shimmer-effect fluid-animate opacity-0 translate-y-[20px] stagger-5 transition-all duration-400 group">
                 Explore Solutions
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-400 group-hover:translate-x-2" />
               </Button>
@@ -231,18 +230,16 @@ export default function HomePage() {
                     superior sound absorption with stunning visual appeal, creating environments that perform as
                     beautifully as they look.
                   </p>
-                  {["Superior acoustic performance", "Custom visual designs"].map((feature, index) => (
-                    <div
-                      key={feature}
-                      className={`flex items-center gap-4 fluid-animate opacity-0 translate-x-[-40px] stagger-${
-                        index + 2
-                      }`}
-                    >
-                      <CheckCircle className="h-5 w-5 text-primary transition-transform duration-300 hover:scale-110" />
-                      <span className="text-muted-foreground">{feature}</span>
-                    </div>
-                  ))}
                 </div>
+                {["Superior acoustic performance", "Custom visual designs"].map((feature, index) => (
+                  <div
+                    key={feature}
+                    className={`flex items-center gap-4 fluid-animate opacity-0 translate-x-[-40px] stagger-${index + 2}`}
+                  >
+                    <CheckCircle className="h-5 w-5 text-primary transition-transform duration-300 hover:scale-110" />
+                    <span className="text-muted-foreground">{feature}</span>
+                  </div>
+                ))}
                 <Button className="btn-secondary magnetic-hover shimmer-effect fluid-animate opacity-0 translate-y-[20px] stagger-4 transition-all duration-400">
                   View Mirage™ Collection
                 </Button>
@@ -259,6 +256,8 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        
 
         <div className="fluid-animate opacity-0 translate-y-[50px]">
           <WallSystemsShowcase />
@@ -298,7 +297,7 @@ export default function HomePage() {
               ].map((service, index) => (
                 <div
                   key={service.title}
-                  className={`space-y-4 magnetic-hover cascade-animate opacity-0 translate-y-[60px] stagger-${service.delay} transition-all duration-700 group`}
+                  className={`space-y-8 magnetic-hover cascade-animate opacity-0 translate-y-[60px] stagger-${service.delay} transition-all duration-700 group`}
                 >
                   <h3 className="heading-secondary text-2xl text-foreground group-hover:text-primary transition-colors duration-400">
                     {service.title}
@@ -308,9 +307,7 @@ export default function HomePage() {
                     {service.features.map((feature, featureIndex) => (
                       <li
                         key={feature}
-                        className={`flex items-center gap-3 fluid-animate opacity-0 translate-x-[-30px] stagger-${
-                          featureIndex + 3
-                        }`}
+                        className={`flex items-center gap-3 fluid-animate opacity-0 translate-x-[-30px] stagger-${featureIndex + 3}`}
                       >
                         <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 group-hover:scale-125 transition-transform duration-400 breathe-animation" />
                         {feature}

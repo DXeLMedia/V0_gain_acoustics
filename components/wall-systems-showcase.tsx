@@ -5,14 +5,54 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const colorOptions = [
-  { name: "Forest Green", color: "#2d4a3e", description: "Deep forest tones for sophisticated spaces" },
-  { name: "Jaffa", color: "#e67e22", description: "Warm orange bringing energy and vibrancy" },
-  { name: "Crimson", color: "#c0392b", description: "Bold red for dramatic impact" },
-  { name: "Teal", color: "#16a085", description: "Calming blue-green for modern environments" },
-  { name: "Plum", color: "#8e44ad", description: "Rich purple adding luxury and depth" },
-  { name: "Amber", color: "#f39c12", description: "Golden yellow for warmth and brightness" },
-  { name: "Charcoal", color: "#2c3e50", description: "Classic dark tone for timeless elegance" },
-  { name: "Sage", color: "#95a5a6", description: "Soft gray-green for subtle sophistication" },
+  {
+    name: "Forest Green",
+    color: "#2d4a3e",
+    description: "Deep forest tones for sophisticated spaces",
+    image: "/modern-office-space-with-acoustic-panels-installat.png",
+  },
+  {
+    name: "Jaffa",
+    color: "#e67e22",
+    description: "Warm orange bringing energy and vibrancy",
+    image: "/modern-restaurant-interior-with-acoustic-panels-an.png",
+  },
+  {
+    name: "Crimson",
+    color: "#c0392b",
+    description: "Bold red for dramatic impact",
+    image: "/professional-recording-studio-with-acoustic-treatm.png",
+  },
+  {
+    name: "Teal",
+    color: "#16a085",
+    description: "Calming blue-green for modern environments",
+    image: "/modern-corporate-office-with-acoustic-ceiling-clou.png",
+  },
+  {
+    name: "Plum",
+    color: "#8e44ad",
+    description: "Rich purple adding luxury and depth",
+    image: "/modern-office-space-with-acoustic-panels-installat.png",
+  },
+  {
+    name: "Amber",
+    color: "#f39c12",
+    description: "Golden yellow for warmth and brightness",
+    image: "/modern-restaurant-interior-with-acoustic-panels-an.png",
+  },
+  {
+    name: "Charcoal",
+    color: "#2c3e50",
+    description: "Classic dark tone for timeless elegance",
+    image: "/professional-recording-studio-with-acoustic-treatm.png",
+  },
+  {
+    name: "Sage",
+    color: "#95a5a6",
+    description: "Soft gray-green for subtle sophistication",
+    image: "/modern-corporate-office-with-acoustic-ceiling-clou.png",
+  },
 ]
 
 export function WallSystemsShowcase() {
@@ -27,135 +67,191 @@ export function WallSystemsShowcase() {
   }
 
   return (
-    <section className="py-32 bg-earth-50 overflow-hidden">
+    <section className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center space-y-6 mb-20 animate-fade-in-up">
-          <h2 className="font-serif text-4xl lg:text-5xl font-light text-earth-900">Wall Systems</h2>
-          <div className="section-divider max-w-24 mx-auto"></div>
-          <p className="text-lg text-earth-700 font-light max-w-2xl mx-auto">
-            Explore our extensive range of acoustic wall panel colors and textures, each designed to enhance both sound
-            quality and visual appeal
-          </p>
+        <div className="mb-16">
+          <nav className="text-sm text-muted-foreground mb-6">
+            <span>Products</span> <span className="mx-2">/</span> <span>Wall Systems</span>
+          </nav>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Wall System Visualization */}
-          <div className="relative animate-slide-in-left">
-            <div className="aspect-[4/5] bg-earth-100 rounded-lg overflow-hidden shadow-2xl">
-              {/* Wall panels with selected color */}
-              <div className="w-full h-full relative">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <div className="space-y-6">
+            {/* Main product image */}
+            <div className="relative group">
+              <div className="aspect-[4/3] bg-muted rounded-lg overflow-hidden">
                 <div
-                  className="absolute inset-0 transition-all duration-700 ease-in-out"
-                  style={{ backgroundColor: colorOptions[selectedColor].color }}
+                  className="w-full h-full relative transition-all duration-700 ease-out"
+                  style={{
+                    backgroundImage: `url(${colorOptions[selectedColor].image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
                 >
-                  {/* Panel grid lines */}
-                  <div className="absolute inset-0 opacity-20">
-                    <div className="grid grid-cols-3 h-full">
-                      <div className="border-r border-white/30"></div>
-                      <div className="border-r border-white/30"></div>
-                      <div></div>
-                    </div>
-                    <div className="absolute inset-0 grid grid-rows-4">
-                      <div className="border-b border-white/30"></div>
-                      <div className="border-b border-white/30"></div>
-                      <div className="border-b border-white/30"></div>
-                      <div></div>
-                    </div>
-                  </div>
+                  {/* Color overlay to show selected color */}
+                  <div
+                    className="absolute inset-0 mix-blend-multiply opacity-40 transition-all duration-700"
+                    style={{ backgroundColor: colorOptions[selectedColor].color }}
+                  />
 
-                  {/* Texture overlay */}
-                  <div className="absolute inset-0 opacity-30 bg-gradient-to-br from-transparent via-white/10 to-transparent"></div>
-                </div>
+                  {/* Navigation arrows */}
+                  <button
+                    onClick={prevColor}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-background/90 backdrop-blur-sm rounded-lg flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-background border border-border"
+                  >
+                    <ChevronLeft className="h-5 w-5 text-foreground" />
+                  </button>
 
-                {/* Room context elements */}
-                <div className="absolute bottom-8 left-8 right-8">
-                  <div className="flex items-end justify-between">
-                    <div className="w-16 h-12 bg-earth-800/80 rounded-sm"></div>
-                    <div className="w-20 h-8 bg-earth-600/60 rounded-full"></div>
-                  </div>
+                  <button
+                    onClick={nextColor}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-background/90 backdrop-blur-sm rounded-lg flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-background border border-border"
+                  >
+                    <ChevronRight className="h-5 w-5 text-foreground" />
+                  </button>
                 </div>
               </div>
             </div>
 
-            {/* Color name overlay */}
-            <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg">
-              <span className="font-serif text-lg font-light text-earth-900">{colorOptions[selectedColor].name}</span>
+            <div className="flex gap-3 overflow-x-auto pb-2">
+              {colorOptions.map((color, index) => (
+                <button
+                  key={color.name}
+                  onClick={() => setSelectedColor(index)}
+                  className={`flex-shrink-0 w-20 h-16 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
+                    index === selectedColor ? "border-primary shadow-lg" : "border-border hover:border-muted-foreground"
+                  }`}
+                >
+                  <div
+                    className="w-full h-full relative"
+                    style={{
+                      backgroundImage: `url(${color.image})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  >
+                    <div
+                      className="absolute inset-0 mix-blend-multiply opacity-50"
+                      style={{ backgroundColor: color.color }}
+                    />
+                  </div>
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* Color Selection Interface */}
-          <div className="space-y-8 animate-slide-in-right">
+          <div className="space-y-8 lg:pl-8">
             <div className="space-y-6">
-              <h3 className="font-serif text-3xl font-light text-earth-900">{colorOptions[selectedColor].name}</h3>
-              <p className="text-lg text-earth-700 font-light leading-relaxed">
-                {colorOptions[selectedColor].description}
+              <h1 className="text-4xl lg:text-5xl font-light text-foreground heading-primary">
+                Acoustic Wall Systems™
+              </h1>
+
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="w-2 h-2 bg-chart-1 rounded-full"></div>
+                <span>Natural timber-look acoustic products</span>
+              </div>
+
+              <p className="text-lg text-foreground/80 leading-relaxed text-refined">
+                Available in panels, baffles, or ceiling tiles, Acoustic Wall Systems™ is a high-performance acoustic
+                solution that mimics timber. To ensure a natural, light and finish, we have hand-picked a selection of
+                timber-look veneers—digitally printed onto the panel surface with a silk, water-based, UV cured ink.
               </p>
             </div>
 
-            {/* Color Navigation */}
-            <div className="flex items-center gap-4">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={prevColor}
-                className="border-earth-300 text-earth-700 hover:bg-earth-100 hover-lift bg-transparent"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </Button>
-
-              <div className="flex-1 flex items-center gap-3 overflow-x-auto pb-2">
-                {colorOptions.map((color, index) => (
-                  <button
-                    key={color.name}
-                    onClick={() => setSelectedColor(index)}
-                    className={`flex-shrink-0 w-12 h-12 rounded-lg border-2 transition-all duration-300 hover-lift ${
-                      index === selectedColor
-                        ? "border-accent-copper shadow-lg scale-110"
-                        : "border-earth-200 hover:border-earth-300"
-                    }`}
-                    style={{ backgroundColor: color.color }}
-                    title={color.name}
-                  />
-                ))}
-              </div>
-
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={nextColor}
-                className="border-earth-300 text-earth-700 hover:bg-earth-100 hover-lift bg-transparent"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-            </div>
-
-            {/* Material Swatches Reference */}
             <div className="space-y-4">
-              <h4 className="font-serif text-xl font-light text-earth-900">Material Samples</h4>
-              <div className="grid grid-cols-2 gap-4">
-                <img
-                  src="/color-swatches-1.jpg"
-                  alt="Color swatches collection 1"
-                  className="w-full h-32 object-cover rounded-lg shadow-md hover-lift"
+              <h3 className="text-xl font-medium text-foreground heading-secondary">
+                Current Selection: {colorOptions[selectedColor].name}
+              </h3>
+              <p className="text-muted-foreground">{colorOptions[selectedColor].description}</p>
+
+              {/* Color swatch */}
+              <div className="flex items-center gap-4">
+                <div
+                  className="w-16 h-16 rounded-lg border border-border shadow-sm"
+                  style={{ backgroundColor: colorOptions[selectedColor].color }}
                 />
-                <img
-                  src="/color-swatches-2.jpg"
-                  alt="Color swatches collection 2"
-                  className="w-full h-32 object-cover rounded-lg shadow-md hover-lift"
-                />
+                <div className="text-sm text-muted-foreground">Color: {colorOptions[selectedColor].name}</div>
               </div>
             </div>
 
-            <div className="flex gap-4">
-              <Button className="bg-accent-copper text-earth-50 hover:bg-accent-warm font-light hover-lift">
-                Request Samples
+            <div className="space-y-4">
+              <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 text-base font-medium btn-primary">
+                Request Acoustic Wall Systems™ samples
               </Button>
-              <Button
-                variant="outline"
-                className="border-earth-300 text-earth-700 hover:bg-earth-100 font-light hover-lift bg-transparent"
-              >
-                View All Colors
-              </Button>
+
+              <div className="grid grid-cols-2 gap-3 text-sm">
+                <button className="text-foreground/70 hover:text-foreground underline text-left">
+                  Find a support installer
+                </button>
+                <button className="text-foreground/70 hover:text-foreground underline text-left">
+                  Technical documents
+                </button>
+              </div>
+            </div>
+
+            <div className="space-y-4 border-t border-border pt-8">
+              <details className="group">
+                <summary className="flex items-center justify-between cursor-pointer py-3 text-foreground font-medium heading-secondary">
+                  <span>Specifications</span>
+                  <ChevronRight className="h-4 w-4 transition-transform group-open:rotate-90" />
+                </summary>
+                <div className="pb-4 text-muted-foreground text-sm space-y-2 text-refined">
+                  <p>• Thickness: 12mm, 24mm options available</p>
+                  <p>• NRC Rating: 0.85-0.95 depending on configuration</p>
+                  <p>• Fire Rating: Class A fire rated</p>
+                  <p>• Dimensions: Custom sizes up to 1200mm x 2400mm</p>
+                </div>
+              </details>
+
+              <details className="group">
+                <summary className="flex items-center justify-between cursor-pointer py-3 text-foreground font-medium heading-secondary">
+                  <span>Features and benefits</span>
+                  <ChevronRight className="h-4 w-4 transition-transform group-open:rotate-90" />
+                </summary>
+                <div className="pb-4 text-muted-foreground text-sm space-y-2 text-refined">
+                  <p>• Superior acoustic performance</p>
+                  <p>• Natural timber appearance</p>
+                  <p>• Easy installation system</p>
+                  <p>• Sustainable materials</p>
+                </div>
+              </details>
+
+              <details className="group">
+                <summary className="flex items-center justify-between cursor-pointer py-3 text-foreground font-medium heading-secondary">
+                  <span>Sizes</span>
+                  <ChevronRight className="h-4 w-4 transition-transform group-open:rotate-90" />
+                </summary>
+                <div className="pb-4 text-muted-foreground text-sm text-refined">
+                  <p>Available in standard and custom dimensions to suit any project requirement.</p>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-24 pt-16 border-t border-border">
+          <div className="text-center space-y-6 mb-12">
+            <h2 className="text-3xl font-light text-foreground heading-secondary">Material Samples</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-refined">
+              View our complete range of acoustic panel colors and textures
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="space-y-4">
+              <img
+                src="/color-swatches-1.jpg"
+                alt="Color swatches collection 1"
+                className="w-full h-64 object-cover rounded-lg shadow-lg hover-lift"
+              />
+              <p className="text-sm text-muted-foreground text-center">Warm tone collection</p>
+            </div>
+            <div className="space-y-4">
+              <img
+                src="/color-swatches-2.jpg"
+                alt="Color swatches collection 2"
+                className="w-full h-64 object-cover rounded-lg shadow-lg hover-lift"
+              />
+              <p className="text-sm text-muted-foreground text-center">Cool tone collection</p>
             </div>
           </div>
         </div>

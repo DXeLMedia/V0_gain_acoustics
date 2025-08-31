@@ -10,6 +10,7 @@ export default function HomePage() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [scrollY, setScrollY] = useState(0)
   const observerRef = useRef<IntersectionObserver | null>(null)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -28,20 +29,30 @@ export default function HomePage() {
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        entries.forEach((entry, index) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-in")
+            setTimeout(() => {
+              entry.target.classList.add("animate-in")
+            }, index * 100)
           }
         })
       },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+      { threshold: 0.15, rootMargin: "0px 0px -100px 0px" },
     )
 
-    const elements = document.querySelectorAll(".scroll-animate")
+    const elements = document.querySelectorAll(".scroll-animate, .fluid-animate, .cascade-animate")
     elements.forEach((el) => observerRef.current?.observe(el))
 
     return () => observerRef.current?.disconnect()
   }, [isLoaded])
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => window.removeEventListener("mousemove", handleMouseMove)
+  }, [])
 
   return (
     <>
@@ -50,31 +61,30 @@ export default function HomePage() {
         className={`min-h-screen bg-background transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0"}`}
       >
         <header
-          className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-            scrollY > 50 ? "bg-background/95 backdrop-blur-xl border-b border-border/50 shadow-lg" : "bg-transparent"
+          className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+            scrollY > 50 ? "bg-background/90 backdrop-blur-xl border-b border-border/50 shadow-2xl" : "bg-transparent"
           }`}
         >
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="flex items-center justify-between h-20">
-              <div className="flex items-center animate-slide-in-left">
-                <span className="text-2xl font-bold text-foreground tracking-tight hover-scale transition-all duration-300 hover:text-primary">
+              <div className="flex items-center fluid-animate opacity-0 translate-x-[-30px]">
+                <span className="text-2xl font-bold text-foreground tracking-tight magnetic-hover transition-all duration-300 hover:text-primary">
                   Gain Acoustics
                 </span>
               </div>
-              <nav className="hidden lg:flex items-center space-x-8 animate-fade-in-up animate-delay-200">
+              <nav className="hidden lg:flex items-center space-x-8">
                 {["Solutions", "Projects", "Services", "Contact"].map((item, index) => (
                   <a
                     key={item}
                     href={`#${item.toLowerCase()}`}
-                    className="text-muted-foreground hover:text-primary transition-all duration-300 font-medium hover-scale relative group"
-                    style={{ animationDelay: `${200 + index * 100}ms` }}
+                    className={`text-muted-foreground hover:text-primary transition-all duration-400 font-medium magnetic-hover relative group fluid-animate opacity-0 translate-y-[-20px] stagger-${index + 2}`}
                   >
                     {item}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-400 group-hover:w-full"></span>
                   </a>
                 ))}
               </nav>
-              <Button className="btn-secondary hover-lift animate-slide-in-right animate-delay-300 transition-all duration-300 hover:scale-105">
+              <Button className="btn-primary magnetic-hover fluid-animate opacity-0 translate-x-[30px] stagger-6 transition-all duration-400">
                 Get Quote
               </Button>
             </div>
@@ -86,56 +96,56 @@ export default function HomePage() {
             <img
               src="https://gainacousticssolutions.com/wp-content/uploads/2024/04/img_2260.jpg"
               alt="Acoustic panel installation"
-              className="w-full h-full object-cover transition-transform duration-700 ease-out"
-              style={{ transform: `translateY(${scrollY * 0.5}px)` }}
+              className="w-full h-full object-cover parallax-smooth transition-transform duration-700 ease-out"
+              style={{ transform: `translateY(${scrollY * 0.3}px) scale(${1 + scrollY * 0.0002})` }}
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/70 to-background/50"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-background/85 via-background/60 to-background/40"></div>
           </div>
 
-          <div className="relative z-10 text-center max-w-5xl mx-auto px-6">
-            <h1 className="heading-primary text-5xl lg:text-7xl text-foreground mb-8 text-balance animate-fade-in-up opacity-0 animation-fill-forwards">
-              <span className="inline-block animate-slide-up" style={{ animationDelay: "0.5s" }}>
+          <div className="relative z-10 text-center max-w-5xl mx-auto px-6 leading-3 text-white">
+            <h1 className="heading-primary text-5xl lg:text-7xl text-foreground mb-8 text-balance">
+              <span className="inline-block cascade-animate opacity-0 translate-y-[40px] stagger-1 liquid-motion">
                 Acoustic
               </span>{" "}
-              <span className="inline-block animate-slide-up" style={{ animationDelay: "0.7s" }}>
+              <span className="inline-block cascade-animate opacity-0 translate-y-[40px] stagger-2 liquid-motion">
                 Excellence
               </span>
-              <span className="block text-primary mt-2 animate-slide-up" style={{ animationDelay: "0.9s" }}>
+              <span className="block text-primary mt-2 cascade-animate opacity-0 translate-y-[40px] stagger-3 liquid-motion">
                 Redefined
               </span>
             </h1>
-            <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto text-refined mb-12 animate-fade-in-up animate-delay-1000 opacity-0 animation-fill-forwards">
+            <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto text-refined mb-12 fluid-animate opacity-0 translate-y-[30px] stagger-4">
               We manufacture, deliver and install large format printed acoustic panels for exceptional sound
               environments that blend performance with stunning visual design.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up animate-delay-1200 opacity-0 animation-fill-forwards">
+            <div className="flex flex-col gap-6 justify-center text-zinc-50 sm:flex-row bg-transparent">
               <Button
                 size="lg"
-                className="btn-primary text-lg px-10 py-4 hover-lift transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                className="btn-primary text-lg px-10 py-4 magnetic-hover shimmer-effect fluid-animate opacity-0 translate-y-[20px] stagger-5 transition-all duration-400 group"
               >
                 Explore Solutions
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-400 group-hover:translate-x-2" />
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="btn-secondary text-lg px-10 py-4 hover-lift bg-transparent transition-all duration-300 hover:scale-105 hover:bg-primary/10"
+                className="btn-secondary text-lg px-10 py-4 magnetic-hover bg-transparent fluid-animate opacity-0 translate-y-[20px] stagger-6 transition-all duration-400 group"
               >
-                <Play className="mr-2 h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
+                <Play className="mr-2 h-5 w-5 transition-transform duration-400 group-hover:scale-125" />
                 Watch Demo
               </Button>
             </div>
           </div>
 
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-muted-foreground animate-float">
-            <ChevronDown className="h-6 w-6 animate-bounce" />
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-muted-foreground breathe-animation">
+            <ChevronDown className="h-6 w-6" />
           </div>
         </section>
 
-        <section className="py-24 bg-muted/30 scroll-animate opacity-0 translate-y-8 transition-all duration-700">
+        <section className="py-24 bg-muted/30 fluid-animate opacity-0 translate-y-[50px]">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-8 scroll-animate opacity-0 translate-x-[-50px] transition-all duration-700 delay-200">
+              <div className="space-y-8 cascade-animate opacity-0 translate-x-[-60px]">
                 <div className="space-y-6">
                   <h2 className="heading-secondary text-4xl lg:text-5xl text-foreground">Mirage™ Textured Panels</h2>
                   <p className="text-lg text-muted-foreground text-refined">
@@ -147,23 +157,22 @@ export default function HomePage() {
                 {["Superior acoustic performance", "Custom visual designs"].map((feature, index) => (
                   <div
                     key={feature}
-                    className="flex items-center gap-4 scroll-animate opacity-0 translate-x-[-30px] transition-all duration-500"
-                    style={{ transitionDelay: `${400 + index * 100}ms` }}
+                    className={`flex items-center gap-4 fluid-animate opacity-0 translate-x-[-40px] stagger-${index + 2}`}
                   >
-                    <CheckCircle className="h-5 w-5 text-primary" />
+                    <CheckCircle className="h-5 w-5 text-primary transition-transform duration-300 hover:scale-110" />
                     <span className="text-muted-foreground">{feature}</span>
                   </div>
                 ))}
-                <Button className="btn-secondary hover-lift transition-all duration-300 hover:scale-105 scroll-animate opacity-0 translate-y-4 transition-all duration-500 delay-600">
+                <Button className="btn-secondary magnetic-hover shimmer-effect fluid-animate opacity-0 translate-y-[20px] stagger-4 transition-all duration-400">
                   View Mirage™ Collection
                 </Button>
               </div>
-              <div className="relative scroll-animate opacity-0 translate-x-[50px] transition-all duration-700 delay-300">
-                <div className="professional-card p-4 rounded-2xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]">
+              <div className="relative cascade-animate opacity-0 translate-x-[60px]">
+                <div className="professional-card p-4 rounded-2xl magnetic-hover transition-all duration-500">
                   <img
                     src="/modern-restaurant-interior-with-acoustic-panels-an.png"
                     alt="Mirage textured acoustic panels"
-                    className="w-full h-[500px] object-cover rounded-xl transition-transform duration-500 hover:scale-105"
+                    className="w-full h-[500px] object-cover rounded-xl transition-transform duration-700 hover:scale-110"
                   />
                 </div>
               </div>
@@ -171,16 +180,13 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section
-          id="solutions"
-          className="py-24 bg-background scroll-animate opacity-0 translate-y-8 transition-all duration-700"
-        >
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="text-center space-y-6 mb-20 scroll-animate opacity-0 translate-y-4 transition-all duration-600">
-              <h2 className="heading-secondary text-4xl lg:text-5xl text-foreground">Our Solutions</h2>
+        <section id="solutions" className="py-24 bg-muted/30 fluid-animate opacity-0 translate-y-[50px]">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 font-extralight leading-3">
+            <div className="text-center space-y-6 mb-20 cascade-animate opacity-0 translate-y-[30px]">
+              <h2 className="heading-secondary text-4xl lg:text-5xl text-foreground text-balance">Our Solutions</h2>
               <div className="section-divider max-w-20 mx-auto"></div>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-refined">
-                Comprehensive acoustic solutions designed for every environment
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-refined leading-relaxed">
+                Comprehensive acoustic solutions engineered for exceptional performance and aesthetic excellence
               </p>
             </div>
 
@@ -191,46 +197,59 @@ export default function HomePage() {
                   icon: Volume2,
                   title: "Echo Reduction",
                   description:
-                    "Acoustic ceiling clouds engineered for optimal sound control in professional environments.",
-                  delay: 100,
+                    "Advanced acoustic ceiling clouds engineered for optimal sound control in professional environments with superior performance.",
+                  delay: 1,
                 },
                 {
                   image: "/modern-corporate-office-with-acoustic-ceiling-clou.png",
                   icon: Headphones,
                   title: "Soundproofing",
-                  description: "Comprehensive acoustic solutions designed to create peaceful, productive spaces.",
-                  delay: 200,
+                  description:
+                    "Comprehensive acoustic solutions designed to create peaceful, productive spaces with exceptional sound isolation.",
+                  delay: 2,
                 },
                 {
                   image: "/modern-office-space-with-acoustic-panels-installat.png",
                   icon: Play,
                   title: "Custom Panels",
-                  description: "High-resolution printed acoustic panels that enhance both acoustics and aesthetics.",
-                  delay: 300,
+                  description:
+                    "High-resolution printed acoustic panels that enhance both acoustics and aesthetics with stunning visual impact.",
+                  delay: 3,
                 },
               ].map((solution, index) => {
                 const IconComponent = solution.icon
                 return (
                   <div
                     key={solution.title}
-                    className="professional-card p-8 rounded-2xl text-center space-y-6 hover-lift scroll-animate opacity-0 translate-y-8 transition-all duration-700 hover:shadow-2xl hover:scale-[1.02] group"
-                    style={{ transitionDelay: `${solution.delay}ms` }}
+                    className={`text-center space-y-6 magnetic-hover cascade-animate opacity-0 translate-y-[60px] stagger-${solution.delay} transition-all duration-700 group`}
                   >
-                    <div className="aspect-square bg-muted/50 rounded-xl overflow-hidden mb-6 group-hover:shadow-lg transition-all duration-500">
+                    <div className="aspect-[4/3] bg-muted/50 rounded-xl overflow-hidden group-hover:shadow-xl transition-all duration-700 relative">
                       <img
                         src={solution.image || "/placeholder.svg"}
                         alt={solution.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </div>
-                    <div className="space-y-4">
-                      <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110">
-                        <IconComponent className="h-6 w-6 text-primary" />
+
+                    <div className="space-y-4 pt-2">
+                      <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto group-hover:bg-primary/20 transition-all duration-500 group-hover:scale-110 breathe-animation">
+                        <IconComponent className="h-7 w-7 text-primary transition-all duration-400 group-hover:scale-110" />
                       </div>
-                      <h3 className="heading-secondary text-xl text-foreground group-hover:text-primary transition-colors duration-300">
+                      <h3 className="heading-secondary text-xl text-foreground group-hover:text-primary transition-colors duration-400 text-balance">
                         {solution.title}
                       </h3>
-                      <p className="text-muted-foreground text-refined">{solution.description}</p>
+                      <p className="text-muted-foreground text-refined leading-relaxed">{solution.description}</p>
+                      <div className="pt-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="text-primary hover:text-primary hover:bg-primary/10 transition-all duration-300"
+                        >
+                          Learn More
+                          <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 )
@@ -239,16 +258,13 @@ export default function HomePage() {
           </div>
         </section>
 
-        <div className="scroll-animate opacity-0 translate-y-8 transition-all duration-700">
+        <div className="fluid-animate opacity-0 translate-y-[50px]">
           <WallSystemsShowcase />
         </div>
 
-        <section
-          id="services"
-          className="py-24 bg-muted/30 scroll-animate opacity-0 translate-y-8 transition-all duration-700"
-        >
+        <section id="services" className="py-24 bg-muted/30 fluid-animate opacity-0 translate-y-[50px]">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="text-center space-y-6 mb-20 scroll-animate opacity-0 translate-y-4 transition-all duration-600">
+            <div className="text-center space-y-6 mb-20 cascade-animate opacity-0 translate-y-[30px]">
               <h2 className="heading-secondary text-4xl lg:text-5xl text-foreground">Our Services</h2>
               <div className="section-divider max-w-20 mx-auto"></div>
             </div>
@@ -264,7 +280,7 @@ export default function HomePage() {
                     "Custom sizing and shapes",
                     "Premium acoustic materials",
                   ],
-                  delay: 200,
+                  delay: 1,
                 },
                 {
                   title: "Professional Installation",
@@ -275,15 +291,14 @@ export default function HomePage() {
                     "Professional installation team",
                     "Post-installation support",
                   ],
-                  delay: 400,
+                  delay: 2,
                 },
               ].map((service, index) => (
                 <div
                   key={service.title}
-                  className="professional-card p-10 rounded-2xl space-y-8 hover-lift scroll-animate opacity-0 translate-y-8 transition-all duration-700 hover:shadow-2xl hover:scale-[1.02] group"
-                  style={{ transitionDelay: `${service.delay}ms` }}
+                  className={`space-y-8 magnetic-hover cascade-animate opacity-0 translate-y-[60px] stagger-${service.delay} transition-all duration-700 group`}
                 >
-                  <h3 className="heading-secondary text-2xl text-foreground group-hover:text-primary transition-colors duration-300">
+                  <h3 className="heading-secondary text-2xl text-foreground group-hover:text-primary transition-colors duration-400">
                     {service.title}
                   </h3>
                   <p className="text-muted-foreground text-refined">{service.description}</p>
@@ -291,10 +306,9 @@ export default function HomePage() {
                     {service.features.map((feature, featureIndex) => (
                       <li
                         key={feature}
-                        className="flex items-center gap-3 scroll-animate opacity-0 translate-x-[-20px] transition-all duration-500"
-                        style={{ transitionDelay: `${service.delay + 200 + featureIndex * 100}ms` }}
+                        className={`flex items-center gap-3 fluid-animate opacity-0 translate-x-[-30px] stagger-${featureIndex + 3}`}
                       >
-                        <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
+                        <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 group-hover:scale-125 transition-transform duration-400 breathe-animation" />
                         {feature}
                       </li>
                     ))}
@@ -305,13 +319,10 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section
-          id="contact"
-          className="py-24 bg-background scroll-animate opacity-0 translate-y-8 transition-all duration-700"
-        >
+        <section id="contact" className="py-24 bg-background fluid-animate opacity-0 translate-y-[50px]">
           <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
             <div className="space-y-12">
-              <div className="space-y-6 scroll-animate opacity-0 translate-y-4 transition-all duration-600">
+              <div className="space-y-6 cascade-animate opacity-0 translate-y-[30px]">
                 <h2 className="heading-secondary text-4xl lg:text-5xl text-foreground">Get in Touch</h2>
                 <div className="section-divider max-w-20 mx-auto"></div>
                 <p className="text-xl text-muted-foreground text-refined">
@@ -321,17 +332,16 @@ export default function HomePage() {
 
               <div className="flex flex-col sm:flex-row gap-8 justify-center items-center text-muted-foreground">
                 {[
-                  { icon: Phone, text: "678.575.2453", delay: 200 },
-                  { icon: Mail, text: "gainacousticssolutions@gmail.com", delay: 300 },
+                  { icon: Phone, text: "678.575.2453", delay: 1 },
+                  { icon: Mail, text: "gainacousticssolutions@gmail.com", delay: 2 },
                 ].map((contact, index) => {
                   const IconComponent = contact.icon
                   return (
                     <div
                       key={contact.text}
-                      className="flex items-center gap-3 professional-card px-6 py-4 rounded-xl hover-lift scroll-animate opacity-0 translate-y-4 transition-all duration-500 hover:shadow-lg hover:scale-105 group"
-                      style={{ transitionDelay: `${contact.delay}ms` }}
+                      className={`flex items-center gap-3 professional-card px-6 py-4 rounded-xl magnetic-hover shimmer-effect fluid-animate opacity-0 translate-y-[30px] stagger-${contact.delay} transition-all duration-500 group`}
                     >
-                      <IconComponent className="h-5 w-5 text-primary group-hover:scale-110 transition-transform duration-300" />
+                      <IconComponent className="h-5 w-5 text-primary group-hover:scale-125 transition-transform duration-400 breathe-animation" />
                       <span className="font-medium">{contact.text}</span>
                     </div>
                   )
@@ -340,10 +350,10 @@ export default function HomePage() {
 
               <Button
                 size="lg"
-                className="btn-primary text-lg px-12 py-4 hover-lift scroll-animate opacity-0 translate-y-4 transition-all duration-500 delay-400 hover:scale-105 hover:shadow-xl group"
+                className="btn-primary text-lg px-12 py-4 magnetic-hover shimmer-effect fluid-animate opacity-0 translate-y-[30px] stagger-3 transition-all duration-500 group"
               >
                 Start Your Project
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-400 group-hover:translate-x-2" />
               </Button>
             </div>
           </div>

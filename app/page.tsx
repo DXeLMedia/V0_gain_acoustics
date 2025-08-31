@@ -142,44 +142,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="py-24 bg-muted/30 fluid-animate opacity-0 translate-y-[50px]">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-8 cascade-animate opacity-0 translate-x-[-60px]">
-                <div className="space-y-6">
-                  <h2 className="heading-secondary text-4xl lg:text-5xl text-foreground">Mirage™ Textured Panels</h2>
-                  <p className="text-lg text-muted-foreground text-refined">
-                    A textured finish bringing depth and nuance to every space. Our signature acoustic panels combine
-                    superior sound absorption with stunning visual appeal, creating environments that perform as
-                    beautifully as they look.
-                  </p>
-                </div>
-                {["Superior acoustic performance", "Custom visual designs"].map((feature, index) => (
-                  <div
-                    key={feature}
-                    className={`flex items-center gap-4 fluid-animate opacity-0 translate-x-[-40px] stagger-${index + 2}`}
-                  >
-                    <CheckCircle className="h-5 w-5 text-primary transition-transform duration-300 hover:scale-110" />
-                    <span className="text-muted-foreground">{feature}</span>
-                  </div>
-                ))}
-                <Button className="btn-secondary magnetic-hover shimmer-effect fluid-animate opacity-0 translate-y-[20px] stagger-4 transition-all duration-400">
-                  View Mirage™ Collection
-                </Button>
-              </div>
-              <div className="relative cascade-animate opacity-0 translate-x-[60px]">
-                <div className="professional-card p-4 rounded-2xl magnetic-hover transition-all duration-500">
-                  <img
-                    src="/modern-restaurant-interior-with-acoustic-panels-an.png"
-                    alt="Mirage textured acoustic panels"
-                    className="w-full h-[500px] object-cover rounded-xl transition-transform duration-700 hover:scale-110"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <section id="solutions" className="py-24 bg-muted/30 fluid-animate opacity-0 translate-y-[50px]">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 font-extralight leading-3">
             <div className="text-center space-y-6 mb-20 cascade-animate opacity-0 translate-y-[30px]">
@@ -258,6 +220,46 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="py-24 bg-muted/30 fluid-animate opacity-0 translate-y-[50px]">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="space-y-8 cascade-animate opacity-0 translate-x-[-60px]">
+                <div className="space-y-6">
+                  <h2 className="heading-secondary text-4xl lg:text-5xl text-foreground">Mirage™ Textured Panels</h2>
+                  <p className="text-lg text-muted-foreground text-refined">
+                    A textured finish bringing depth and nuance to every space. Our signature acoustic panels combine
+                    superior sound absorption with stunning visual appeal, creating environments that perform as
+                    beautifully as they look.
+                  </p>
+                  {["Superior acoustic performance", "Custom visual designs"].map((feature, index) => (
+                    <div
+                      key={feature}
+                      className={`flex items-center gap-4 fluid-animate opacity-0 translate-x-[-40px] stagger-${
+                        index + 2
+                      }`}
+                    >
+                      <CheckCircle className="h-5 w-5 text-primary transition-transform duration-300 hover:scale-110" />
+                      <span className="text-muted-foreground">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+                <Button className="btn-secondary magnetic-hover shimmer-effect fluid-animate opacity-0 translate-y-[20px] stagger-4 transition-all duration-400">
+                  View Mirage™ Collection
+                </Button>
+              </div>
+              <div className="relative cascade-animate opacity-0 translate-x-[60px]">
+                <div className="professional-card p-4 rounded-2xl magnetic-hover transition-all duration-500">
+                  <img
+                    src="/modern-restaurant-interior-with-acoustic-panels-an.png"
+                    alt="Mirage textured acoustic panels"
+                    className="w-full h-[500px] object-cover rounded-xl transition-transform duration-700 hover:scale-110"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="fluid-animate opacity-0 translate-y-[50px]">
           <WallSystemsShowcase />
         </div>
@@ -296,7 +298,7 @@ export default function HomePage() {
               ].map((service, index) => (
                 <div
                   key={service.title}
-                  className={`space-y-8 magnetic-hover cascade-animate opacity-0 translate-y-[60px] stagger-${service.delay} transition-all duration-700 group`}
+                  className={`space-y-4 magnetic-hover cascade-animate opacity-0 translate-y-[60px] stagger-${service.delay} transition-all duration-700 group`}
                 >
                   <h3 className="heading-secondary text-2xl text-foreground group-hover:text-primary transition-colors duration-400">
                     {service.title}
@@ -306,7 +308,9 @@ export default function HomePage() {
                     {service.features.map((feature, featureIndex) => (
                       <li
                         key={feature}
-                        className={`flex items-center gap-3 fluid-animate opacity-0 translate-x-[-30px] stagger-${featureIndex + 3}`}
+                        className={`flex items-center gap-3 fluid-animate opacity-0 translate-x-[-30px] stagger-${
+                          featureIndex + 3
+                        }`}
                       >
                         <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 group-hover:scale-125 transition-transform duration-400 breathe-animation" />
                         {feature}

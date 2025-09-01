@@ -1,6 +1,8 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 import { LoadingScreen } from "@/components/loading-screen"
 import { Phone, Mail, ArrowRight, ChevronDown, Play, Volume2, Headphones, CheckCircle } from "lucide-react"
 import { useEffect, useState, useRef } from "react"
@@ -321,41 +323,62 @@ export default function HomePage() {
         </section>
 
         <section id="contact" className="py-24 bg-background fluid-animate opacity-0 translate-y-[50px]">
-          <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-            <div className="space-y-12">
-              <div className="space-y-6 cascade-animate opacity-0 translate-y-[30px]">
-                <h2 className="heading-secondary text-4xl lg:text-5xl text-foreground">Get in Touch</h2>
-                <div className="section-divider max-w-20 mx-auto"></div>
-                <p className="text-xl text-muted-foreground text-refined">
-                  Ready to transform your space with exceptional acoustic design?
-                </p>
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-16 items-start">
+              <div className="space-y-12 cascade-animate opacity-0 translate-y-[30px]">
+                <div className="space-y-6">
+                  <h2 className="heading-secondary text-4xl lg:text-5xl text-foreground">Get in Touch</h2>
+                  <div className="section-divider max-w-20"></div>
+                  <p className="text-xl text-muted-foreground text-refined">
+                    Ready to transform your space with exceptional acoustic design? Contact us today to start your project.
+                  </p>
+                </div>
+                <div className="space-y-6">
+                  {[
+                    { icon: Phone, text: "678.575.2453", delay: 1 },
+                    { icon: Mail, text: "gainacousticssolutions@gmail.com", delay: 2 },
+                  ].map((contact, index) => {
+                    const IconComponent = contact.icon
+                    return (
+                      <div
+                        key={contact.text}
+                        className={`flex items-center gap-4 professional-card px-6 py-4 rounded-xl magnetic-hover shimmer-effect fluid-animate opacity-0 translate-y-[30px] stagger-${contact.delay} transition-all duration-500 group`}
+                      >
+                        <IconComponent className="h-6 w-6 text-primary group-hover:scale-125 transition-transform duration-400 breathe-animation" />
+                        <span className="text-lg font-medium">{contact.text}</span>
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-8 justify-center items-center text-muted-foreground">
-                {[
-                  { icon: Phone, text: "678.575.2453", delay: 1 },
-                  { icon: Mail, text: "gainacousticssolutions@gmail.com", delay: 2 },
-                ].map((contact, index) => {
-                  const IconComponent = contact.icon
-                  return (
-                    <div
-                      key={contact.text}
-                      className={`flex items-center gap-3 professional-card px-6 py-4 rounded-xl magnetic-hover shimmer-effect fluid-animate opacity-0 translate-y-[30px] stagger-${contact.delay} transition-all duration-500 group`}
-                    >
-                      <IconComponent className="h-5 w-5 text-primary group-hover:scale-125 transition-transform duration-400 breathe-animation" />
-                      <span className="font-medium">{contact.text}</span>
+              <div className="professional-card p-8 rounded-2xl magnetic-hover cascade-animate opacity-0 translate-y-[30px] stagger-2">
+                <h3 className="text-2xl font-bold text-foreground mb-6">Send us a message</h3>
+                <form className="space-y-6">
+                  <div className="grid sm:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label htmlFor="name" className="text-sm font-medium text-muted-foreground">Name</label>
+                      <Input id="name" placeholder="Your name" className="w-full" />
                     </div>
-                  )
-                })}
+                    <div className="space-y-2">
+                      <label htmlFor="email" className="text-sm font-medium text-muted-foreground">Email</label>
+                      <Input id="email" type="email" placeholder="Your email" className="w-full" />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="message" className="text-sm font-medium text-muted-foreground">Message</label>
+                    <Textarea id="message" placeholder="How can we help?" className="min-h-[120px]" />
+                  </div>
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="btn-primary w-full text-lg magnetic-hover shimmer-effect transition-all duration-500 group"
+                  >
+                    Send Message
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-400 group-hover:translate-x-2" />
+                  </Button>
+                </form>
               </div>
-
-              <Button
-                size="lg"
-                className="btn-primary text-lg px-12 py-4 magnetic-hover shimmer-effect fluid-animate opacity-0 translate-y-[30px] stagger-3 transition-all duration-500 group"
-              >
-                Start Your Project
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-400 group-hover:translate-x-2" />
-              </Button>
             </div>
           </div>
         </section>

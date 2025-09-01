@@ -305,7 +305,7 @@ export default function HomePage() {
                     {service.title}
                   </h3>
                   <p className="text-muted-foreground text-refined">{service.description}</p>
-                  <ul className="space-y-4 text-muted-foreground">
+                  <ul className="space-y-4 text-muted-foreground list-inside">
                     {service.features.map((feature, featureIndex) => (
                       <li
                         key={feature}
@@ -342,7 +342,7 @@ export default function HomePage() {
                     return (
                       <div
                         key={contact.text}
-                        className={`flex items-center gap-4 professional-card px-6 py-4 rounded-xl magnetic-hover shimmer-effect fluid-animate opacity-0 translate-y-[30px] stagger-${contact.delay} transition-all duration-500 group`}
+                        className={`flex items-center gap-4 px-6 py-4 rounded-xl fluid-animate opacity-0 translate-y-[30px] stagger-${contact.delay} transition-all duration-500 group`}
                       >
                         <IconComponent className="h-6 w-6 text-primary group-hover:scale-125 transition-transform duration-400 breathe-animation" />
                         <span className="text-lg font-medium">{contact.text}</span>
@@ -352,7 +352,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className="professional-card p-8 rounded-2xl magnetic-hover cascade-animate opacity-0 translate-y-[30px] stagger-2">
+              <div className="p-8 rounded-2xl cascade-animate opacity-0 translate-y-[30px] stagger-2">
                 <h3 className="text-2xl font-bold text-foreground mb-6">Send us a message</h3>
                 <form className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">

@@ -9,6 +9,7 @@ import { useEffect, useState, useRef } from "react"
 import { WallSystemsShowcase } from "@/components/wall-systems-showcase"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import CircularGallery from "@/components/ui/CircularGallery"
+import { ScrollToTop } from "@/components/ui/scroll-to-top"
 
 export default function HomePage() {
   const [videoModalOpen, setVideoModalOpen] = useState(false)
@@ -74,9 +75,11 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="flex items-center justify-between h-20">
               <div className="flex items-center fluid-animate opacity-0 translate-x-[-30px]">
-                <span className="text-2xl font-bold text-foreground tracking-tight magnetic-hover transition-all duration-300 hover:text-primary">
-                  Gain Acoustics
-                </span>
+                <a href="#home">
+                  <span className="text-2xl font-bold text-foreground tracking-tight magnetic-hover transition-all duration-300 hover:text-primary">
+                    Gain Acoustics
+                  </span>
+                </a>
               </div>
               <nav className="hidden lg:flex items-center space-x-8">
                 {["Solutions", "Demo", "Services", "Contact"].map((item, index) => (
@@ -99,7 +102,7 @@ export default function HomePage() {
           </div>
         </header>
 
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
             <img
               src="https://gainacousticssolutions.com/wp-content/uploads/2024/04/img_2260.jpg"
@@ -127,12 +130,14 @@ export default function HomePage() {
               environments that blend performance with stunning visual design.
             </p>
             <div className="flex flex-col gap-6 justify-center text-zinc-50 sm:flex-row bg-transparent">
-              <Button
-                size="lg"
-                className="btn-primary text-lg px-10 py-4 magnetic-hover shimmer-effect fluid-animate opacity-0 translate-y-[20px] stagger-5 transition-all duration-400 group">
-                Explore Solutions
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-400 group-hover:translate-x-2" />
-              </Button>
+              <a href="#solutions">
+                <Button
+                  size="lg"
+                  className="btn-primary text-lg px-10 py-4 magnetic-hover shimmer-effect fluid-animate opacity-0 translate-y-[20px] stagger-5 transition-all duration-400 group">
+                  Explore Solutions
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-400 group-hover:translate-x-2" />
+                </Button>
+              </a>
               <a href="#demo">
                 <Button
                   size="lg"
@@ -248,7 +253,6 @@ export default function HomePage() {
                     key={feature}
                     className={`flex items-center gap-4 fluid-animate opacity-0 translate-x-[-40px] stagger-${index + 2}`}
                   >
-                    <CheckCircle className="h-5 w-5 text-primary transition-transform duration-300 hover:scale-110" />
                     <span className="text-muted-foreground">{feature}</span>
                   </div>
                 ))}
@@ -321,7 +325,6 @@ export default function HomePage() {
                         key={feature}
                         className={`flex items-center gap-3 fluid-animate opacity-0 translate-x-[-30px] stagger-${featureIndex + 3}`}
                       >
-                        <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 group-hover:scale-125 transition-transform duration-400 breathe-animation" />
                         {feature}
                       </li>
                     ))}
@@ -392,31 +395,14 @@ export default function HomePage() {
               </div>
 
               <div className="p-8 rounded-2xl cascade-animate opacity-0 translate-y-[30px] stagger-2">
-                <h3 className="text-2xl font-bold text-foreground mb-6">Send us a message</h3>
-                <form className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium text-muted-foreground">Name</label>
-                      <Input id="name" placeholder="Your name" className="w-full" />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium text-muted-foreground">Email</label>
-                      <Input id="email" type="email" placeholder="Your email" className="w-full" />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium text-muted-foreground">Message</label>
-                    <Textarea id="message" placeholder="How can we help?" className="min-h-[120px]" />
-                  </div>
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="btn-primary w-full text-lg magnetic-hover shimmer-effect transition-all duration-500 group"
-                  >
-                    Send Message
-                    <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-400 group-hover:translate-x-2" />
-                  </Button>
-                </form>
+                <h3 className="text-2xl font-bold text-foreground mb-6">Lets Connect!</h3>
+                <iframe
+                  aria-label="Let's Connect"
+                  frameBorder="0"
+                  allow="camera;"
+                  style={{ height: "500px", width: "99%", border: "none" }}
+                  src="https://forms.zohopublic.com/dxelmediagm1/form/ContactUs/formperma/UsUj4NJVoS6TglQhRRbg-yGCmns6e5iVzLy3Z5IuLEE?zf_enablecamera=true"
+                ></iframe>
               </div>
             </div>
           </div>
@@ -452,6 +438,7 @@ export default function HomePage() {
             <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02} />
           </DialogContent>
         </Dialog>
+        <ScrollToTop />
       </div>
     </>
   )

@@ -4,11 +4,15 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { LoadingScreen } from "@/components/loading-screen"
-import { Phone, Mail, ArrowRight, ChevronDown, Play, Volume2, Headphones, CheckCircle } from "lucide-react"
+import { Phone, Mail, ArrowRight, ChevronDown, Play, Volume2, Headphones, CheckCircle, Video, Camera } from "lucide-react"
 import { useEffect, useState, useRef } from "react"
 import { WallSystemsShowcase } from "@/components/wall-systems-showcase"
+import { Dialog, DialogContent } from "@/components/ui/dialog"
+import CircularGallery from "@/components/ui/CircularGallery"
 
 export default function HomePage() {
+  const [videoModalOpen, setVideoModalOpen] = useState(false)
+  const [picturesModalOpen, setPicturesModalOpen] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
   const [scrollY, setScrollY] = useState(0)
   const observerRef = useRef<IntersectionObserver | null>(null)
@@ -75,7 +79,7 @@ export default function HomePage() {
                 </span>
               </div>
               <nav className="hidden lg:flex items-center space-x-8">
-                {["Solutions", "Projects", "Services", "Contact"].map((item, index) => (
+                {["Solutions", "Demo", "Services", "Contact"].map((item, index) => (
                   <a
                     key={item}
                     href={`#${item.toLowerCase()}`}
@@ -86,9 +90,11 @@ export default function HomePage() {
                   </a>
                 ))}
               </nav>
-              <Button className="btn-primary magnetic-hover fluid-animate opacity-0 translate-x-[30px] stagger-6 transition-all duration-400">
-                Get Quote
-              </Button>
+              <a href="#contact">
+                <Button className="btn-primary magnetic-hover fluid-animate opacity-0 translate-x-[30px] stagger-6 transition-all duration-400">
+                  Get Quote
+                </Button>
+              </a>
             </div>
           </div>
         </header>
@@ -127,14 +133,16 @@ export default function HomePage() {
                 Explore Solutions
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-400 group-hover:translate-x-2" />
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="btn-secondary text-lg px-10 py-4 magnetic-hover bg-transparent fluid-animate opacity-0 translate-y-[20px] stagger-6 transition-all duration-400 group"
-              >
-                <Play className="mr-2 h-5 w-5 transition-transform duration-400 group-hover:scale-125" />
-                Watch Demo
-              </Button>
+              <a href="#demo">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="btn-secondary text-lg px-10 py-4 magnetic-hover bg-transparent fluid-animate opacity-0 translate-y-[20px] stagger-6 transition-all duration-400 group"
+                >
+                  <Play className="mr-2 h-5 w-5 transition-transform duration-400 group-hover:scale-125" />
+                  Watch Demo
+                </Button>
+              </a>
             </div>
           </div>
 
@@ -204,14 +212,16 @@ export default function HomePage() {
                       </h3>
                       <p className="text-muted-foreground text-refined leading-relaxed">{solution.description}</p>
                       <div className="pt-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="text-primary hover:text-primary hover:bg-primary/10 transition-all duration-300"
-                        >
-                          Learn More
-                          <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                        </Button>
+                        <a href="#contact">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="text-primary hover:text-primary hover:bg-primary/10 transition-all duration-300"
+                          >
+                            Learn More
+                            <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                          </Button>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -322,6 +332,35 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section id="demo" className="py-24 bg-muted/30 fluid-animate opacity-0 translate-y-[50px]">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="text-center space-y-6 mb-20 cascade-animate opacity-0 translate-y-[30px]">
+              <h2 className="heading-secondary text-4xl lg:text-5xl text-foreground">Installation Demo Content</h2>
+              <div className="section-divider max-w-20 mx-auto"></div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <div
+                onClick={() => setVideoModalOpen(true)}
+                className="text-center space-y-6 p-8 border rounded-xl hover:shadow-xl transition-all duration-300 cursor-pointer"
+              >
+                <div className="w-20 h-20 bg-primary/10 rounded-xl flex items-center justify-center mx-auto">
+                  <Video className="h-10 w-10 text-primary" />
+                </div>
+                <h3 className="heading-secondary text-2xl text-foreground">Videos</h3>
+              </div>
+              <div
+                onClick={() => setPicturesModalOpen(true)}
+                className="text-center space-y-6 p-8 border rounded-xl hover:shadow-xl transition-all duration-300 cursor-pointer"
+              >
+                <div className="w-20 h-20 bg-primary/10 rounded-xl flex items-center justify-center mx-auto">
+                  <Camera className="h-10 w-10 text-primary" />
+                </div>
+                <h3 className="heading-secondary text-2xl text-foreground">Pictures</h3>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="contact" className="py-24 bg-background fluid-animate opacity-0 translate-y-[50px]">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-start">
@@ -335,7 +374,7 @@ export default function HomePage() {
                 </div>
                 <div className="space-y-6">
                   {[
-                    { icon: Phone, text: "678.575.2453", delay: 1 },
+                    { icon: Phone, text: "076 574 2053", delay: 1 },
                     { icon: Mail, text: "gainacousticssolutions@gmail.com", delay: 2 },
                   ].map((contact, index) => {
                     const IconComponent = contact.icon
@@ -393,6 +432,26 @@ export default function HomePage() {
             </div>
           </div>
         </footer>
+
+        <Dialog open={videoModalOpen} onOpenChange={setVideoModalOpen}>
+          <DialogContent className="max-w-4xl h-auto bg-black border-none">
+            <iframe
+              width="100%"
+              height="500"
+              src="https://www.youtube.com/embed/tOjVUTDVjvQ?si=S1fOoySFgPPomu2g"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+          </DialogContent>
+        </Dialog>
+
+        <Dialog open={picturesModalOpen} onOpenChange={setPicturesModalOpen}>
+          <DialogContent className="max-w-6xl h-[80vh] bg-transparent border-none p-0">
+            <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02} />
+          </DialogContent>
+        </Dialog>
       </div>
     </>
   )

@@ -242,7 +242,7 @@ export default function HomePage() {
               <div className="space-y-8 cascade-animate opacity-0 translate-x-[-60px]">
                 <div className="space-y-6">
                   <h2 className="heading-secondary text-4xl lg:text-5xl text-foreground">Mirage™ Textured Panels</h2>
-                  <p className="text-lg text-muted-foreground text-refined">
+                  <p className="text-lg text-muted-foreground text-refined leading-relaxed">
                     A textured finish bringing depth and nuance to every space. Our signature acoustic panels combine
                     superior sound absorption with stunning visual appeal, creating environments that perform as
                     beautifully as they look.
@@ -318,7 +318,7 @@ export default function HomePage() {
                   <h3 className="heading-secondary text-2xl text-foreground group-hover:text-primary transition-colors duration-400">
                     {service.title}
                   </h3>
-                  <p className="text-muted-foreground text-refined">{service.description}</p>
+                  <p className="text-muted-foreground text-refined leading-relaxed">{service.description}</p>
                   <ul className="space-y-4 text-muted-foreground list-inside">
                     {service.features.map((feature, featureIndex) => (
                       <li

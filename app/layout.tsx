@@ -12,7 +12,7 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: "Gain Acoustics Solutions",
+  title: "Gain Acoustic Solutions",
   description: "We manufacture, deliver and install large format printed acoustic panels",
   generator: 'v0.app',
   icons: {

@@ -76,9 +76,7 @@ export default function HomePage() {
             <div className="flex items-center justify-between h-20">
               <div className="flex items-center fluid-animate opacity-0 translate-x-[-30px]">
                 <a href="#home">
-                  <span className="text-2xl font-bold text-foreground tracking-tight magnetic-hover transition-all duration-300 hover:text-primary">
-                    Gain Acoustics
-                  </span>
+                  <img src="/GASLogoI_25.png" alt="Gain Acoustics" className="h-12" />
                 </a>
               </div>
               <nav className="hidden lg:flex items-center space-x-8">
@@ -411,7 +409,7 @@ export default function HomePage() {
         <footer className="py-12 bg-muted/30 border-t border-border/50">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-              <span className="text-xl font-bold text-foreground tracking-tight">Gain Acoustics</span>
+              <img src="/GASLogoI_25.png" alt="Gain Acoustics" className="h-10" />
               <p className="text-muted-foreground text-center">
                 © 2024 Gain Acoustics Solutions. Creating acoustically exceptional environments.
               </p>

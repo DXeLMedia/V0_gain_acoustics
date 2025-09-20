@@ -14,7 +14,10 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Gain Acoustics Solutions",
   description: "We manufacture, deliver and install large format printed acoustic panels",
-    generator: 'v0.app'
+  generator: 'v0.app',
+  icons: {
+    icon: '/GASLogoI_25.png',
+  },
 }
 
 export default function RootLayout({

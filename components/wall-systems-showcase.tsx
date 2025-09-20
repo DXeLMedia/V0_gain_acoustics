@@ -196,8 +196,6 @@ export function WallSystemsShowcase() {
                 </summary>
                 <div className="pb-4 text-muted-foreground text-sm space-y-2 text-refined">
                   <p>• Thickness: 12mm, 24mm options available</p>
-                  <p>• NRC Rating: 0.85-0.95 depending on configuration</p>
-                  <p>• Fire Rating: Class A fire rated</p>
                   <p>• Dimensions: Custom sizes up to 1200mm x 2400mm</p>
                 </div>
               </details>

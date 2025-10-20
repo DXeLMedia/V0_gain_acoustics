@@ -239,7 +239,7 @@ export default function HomePage() {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-8 cascade-animate opacity-0 translate-x-[-60px]">
                 <div className="space-y-6">
-                  <h2 className="heading-secondary text-4xl lg:text-5xl text-foreground">Vulcan</h2>
+                  <h2 className="heading-secondary text-4xl lg:text-5xl text-foreground">Vulcan Textured Panels</h2>
                   <p className="text-lg text-muted-foreground text-refined leading-relaxed">
                     A textured finish bringing depth and nuance to every space. Our signature acoustic panels combine
                     superior sound absorption with stunning visual appeal, creating environments that perform as

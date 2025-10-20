@@ -1,13 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@layer base {
-  @font-face {
-    font-family: 'Poppins Light';
-    src: url('/POPPINS-LIGHT.TTF') format('truetype');
-  }
-}
-
 @custom-variant dark (&:is(.dark *));
 
 :root {

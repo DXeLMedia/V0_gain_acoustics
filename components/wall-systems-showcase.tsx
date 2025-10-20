@@ -234,7 +234,7 @@ export function WallSystemsShowcase() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <div className="space-y-4">
               <img
                 src="/color-swatches-1.jpg"
@@ -250,6 +250,14 @@ export function WallSystemsShowcase() {
                 className="w-full h-64 object-cover rounded-lg shadow-lg hover-lift"
               />
               <p className="text-sm text-muted-foreground text-center">Cool tone collection</p>
+            </div>
+            <div id="vulcan-range" className="space-y-4">
+              <img
+                src="/modern-restaurant-interior-with-acoustic-panels-an.png"
+                alt="Vulcan textured acoustic panels"
+                className="w-full h-64 object-cover rounded-lg shadow-lg hover-lift"
+              />
+              <p className="text-sm text-muted-foreground text-center">Vulcan Range</p>
             </div>
           </div>
         </div>

@@ -239,30 +239,24 @@ export default function HomePage() {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-8 cascade-animate opacity-0 translate-x-[-60px]">
                 <div className="space-y-6">
-                  <h2 className="heading-secondary text-4xl lg:text-5xl text-foreground">Mirage™ Textured Panels</h2>
+                  <h2 className="heading-secondary text-4xl lg:text-5xl text-foreground">Vulcan</h2>
                   <p className="text-lg text-muted-foreground text-refined leading-relaxed">
                     A textured finish bringing depth and nuance to every space. Our signature acoustic panels combine
                     superior sound absorption with stunning visual appeal, creating environments that perform as
-                    beautifully as they look.
+                    beautifully as they look. Superior acoustic performance. Custom visual designs.
                   </p>
                 </div>
-                {["Superior acoustic performance", "Custom visual designs"].map((feature, index) => (
-                  <div
-                    key={feature}
-                    className={`flex items-center gap-4 fluid-animate opacity-0 translate-x-[-40px] stagger-${index + 2}`}
-                  >
-                    <span className="text-muted-foreground">{feature}</span>
-                  </div>
-                ))}
-                <Button className="btn-secondary magnetic-hover shimmer-effect fluid-animate opacity-0 translate-y-[20px] stagger-4 transition-all duration-400">
-                  View Mirage™ Collection
-                </Button>
+                <a href="#vulcan-range">
+                  <Button className="btn-secondary magnetic-hover shimmer-effect fluid-animate opacity-0 translate-y-[20px] stagger-4 transition-all duration-400">
+                    View Vulcan Range
+                  </Button>
+                </a>
               </div>
               <div className="relative cascade-animate opacity-0 translate-x-[60px]">
                 <div className="professional-card p-4 rounded-2xl magnetic-hover transition-all duration-500">
                   <img
                     src="/modern-restaurant-interior-with-acoustic-panels-an.png"
-                    alt="Mirage textured acoustic panels"
+                    alt="Vulcan textured acoustic panels"
                     className="w-full h-[500px] object-cover rounded-xl transition-transform duration-700 hover:scale-110"
                   />
                 </div>

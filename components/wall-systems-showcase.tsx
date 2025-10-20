@@ -70,9 +70,6 @@ export function WallSystemsShowcase() {
     <section className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="mb-16">
-          <nav className="text-sm text-muted-foreground mb-6">
-            <span>Products</span> <span className="mx-2">/</span> <span>Wall Systems</span>
-          </nav>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">
@@ -174,18 +171,12 @@ export function WallSystemsShowcase() {
             </div>
 
             <div className="space-y-4">
-              <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 text-base font-medium btn-primary">
-                Request Acoustic Wall Systems™ samples
-              </Button>
+              <a href="#fabric-felt-tile">
+                <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 text-base font-medium btn-primary">
+                  Acoustic Wall Systems Samples
+                </Button>
+              </a>
 
-              <div className="grid grid-cols-2 gap-3 text-sm">
-                <button className="text-foreground/70 hover:text-foreground underline text-left">
-                  Find a support installer
-                </button>
-                <button className="text-foreground/70 hover:text-foreground underline text-left">
-                  Technical documents
-                </button>
-              </div>
             </div>
 
             <div className="space-y-4 border-t border-border pt-8">
@@ -235,7 +226,7 @@ export function WallSystemsShowcase() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="space-y-4">
+            <div id="fabric-felt-tile" className="space-y-4">
               <img
                 src="/color-swatches-1.jpg"
                 alt="Color swatches collection 1"

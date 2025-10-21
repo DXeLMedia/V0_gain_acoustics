@@ -241,9 +241,7 @@ export default function HomePage() {
                 <div className="space-y-6">
                   <h2 className="heading-secondary text-4xl lg:text-5xl text-foreground">Vulcan Textured Panels</h2>
                   <p className="text-lg text-muted-foreground text-refined leading-relaxed">
-                    A textured finish bringing depth and nuance to every space. Our signature acoustic panels combine
-                    superior sound absorption with stunning visual appeal, creating environments that perform as
-                    beautifully as they look. Superior acoustic performance. Custom visual designs.
+                    A textured finish bringing depth and nuance to every space. Our signature acoustic panels combine superior sound absorption with stunning visual appeal, creating environments that perform as beautifully as they look. Superior acoustic performance. Custom visual designs.
                   </p>
                 </div>
                 <a href="#vulcan-range">

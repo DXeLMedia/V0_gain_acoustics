@@ -304,40 +304,42 @@ export function WallSystemsShowcase() {
                 className="w-full h-64 object-cover rounded-lg shadow-lg hover-lift"
               />
               <p className="text-sm text-muted-foreground text-center">Warm tone collection</p>
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div className="space-y-4">
-              <div
-                className="w-full h-64 rounded-lg shadow-lg hover-lift"
-                style={{
-                  backgroundImage: `url('/VULCAN/Fire 42.png')`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-              >
-                <ImageTrail items={vulcanImages} variant={7} />
-              </div>
-              <p className="text-sm text-muted-foreground text-center">Vulcan Range</p>
             </div>
-            <div className="space-y-4">
-              <div
-                className="w-full h-64 rounded-lg shadow-lg hover-lift"
-                style={{
-                  backgroundImage: `url('/FABRIC & FELT/Swatch 62.png')`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-              >
-                <ImageTrail items={fabricAndFeltImages} variant={7} />
+            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              <div className="space-y-4">
+                <div
+                  className="w-full h-64 rounded-lg shadow-lg hover-lift"
+                  style={{
+                    backgroundImage: `url('/VULCAN/Fire 42.png')`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                >
+                  <ImageTrail items={vulcanImages} variant={7} />
+                </div>
+                <p className="text-sm text-muted-foreground text-center">Vulcan Range</p>
               </div>
-              <p className="text-sm text-muted-foreground text-center">Fabric & Felt Range</p>
-            </div>
-            <div id="vulcan-range" className="space-y-4">
-              <img
-                src="/modern-restaurant-interior-with-acoustic-panels-an.png"
-                alt="Vulcan textured acoustic panels"
-                className="w-full h-64 object-cover rounded-lg shadow-lg hover-lift"
-              />
-              <p className="text-sm text-muted-foreground text-center">Vulcan Range</p>
+              <div className="space-y-4">
+                <div
+                  className="w-full h-64 rounded-lg shadow-lg hover-lift"
+                  style={{
+                    backgroundImage: `url('/FABRIC & FELT/Swatch 62.png')`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                >
+                  <ImageTrail items={fabricAndFeltImages} variant={7} />
+                </div>
+                <p className="text-sm text-muted-foreground text-center">Fabric & Felt Range</p>
+              </div>
+              <div id="vulcan-range" className="space-y-4">
+                <img
+                  src="/modern-restaurant-interior-with-acoustic-panels-an.png"
+                  alt="Vulcan textured acoustic panels"
+                  className="w-full h-64 object-cover rounded-lg shadow-lg hover-lift"
+                />
+                <p className="text-sm text-muted-foreground text-center">Vulcan Range</p>
+              </div>
             </div>
           </div>
         </div>

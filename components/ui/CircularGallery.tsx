@@ -420,10 +420,10 @@ class App {
     container: HTMLElement,
     {
       items,
-      bend = 1,
+      bend = 0,
       textColor = '#ffffff',
       borderRadius = 0,
-      font = 'bold 30px Figtree',
+      font = '30px Poppins',
       scrollSpeed = 2,
       scrollEase = 0.05
     }: AppConfig
@@ -473,7 +473,7 @@ class App {
 
   createMedias(
     items: { image: string; text: string }[] | undefined,
-    bend: number = 1,
+    bend: number = 0,
     textColor: string,
     borderRadius: number,
     font: string
@@ -630,10 +630,10 @@ interface CircularGalleryProps {
 
 export default function CircularGallery({
   items,
-  bend = 3,
+  bend = 0,
   textColor = '#ffffff',
   borderRadius = 0.05,
-  font = 'bold 30px Figtree',
+  font = '30px Poppins',
   scrollSpeed = 2,
   scrollEase = 0.05
 }: CircularGalleryProps) {

@@ -1,5 +1,5 @@
 import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from 'ogl';
-import { CSSProperties, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import './CircularGallery.css';
 
@@ -619,39 +619,27 @@ class App {
 }
 
 interface CircularGalleryProps {
-  images?: string[];
+  items?: { image: string; text: string }[];
   bend?: number;
   textColor?: string;
   borderRadius?: number;
-  textStyle?: CSSProperties;
+  font?: string;
   scrollSpeed?: number;
   scrollEase?: number;
 }
 
-export function CircularGallery({
-  images,
+export default function CircularGallery({
+  items,
   bend = 3,
   textColor = '#ffffff',
   borderRadius = 0.05,
-  textStyle = {
-    fontFamily: 'Figtree',
-    fontWeight: 'bold',
-    fontSize: '30px',
-  },
+  font = 'bold 30px Figtree',
   scrollSpeed = 2,
   scrollEase = 0.05
 }: CircularGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!containerRef.current) return;
-
-    const font = `${textStyle.fontWeight} ${textStyle.fontSize} ${textStyle.fontFamily}`;
-
-    const items = images?.map(image => ({
-      image: image,
-      text: image.split('/').pop()?.split('.')[0] ?? '',
-    }));
-
     const app = new App(containerRef.current, {
       items,
       bend,
@@ -664,6 +652,6 @@ export function CircularGallery({
     return () => {
       app.destroy();
     };
-  }, [images, bend, textColor, borderRadius, textStyle, scrollSpeed, scrollEase]);
+  }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
   return <div className="circular-gallery" ref={containerRef} />;
 }

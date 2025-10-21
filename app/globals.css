@@ -748,3 +748,9 @@ svg {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+.gallery-image-text {
+  font-family: var(--font-sans);
+  font-size: 30px;
+  font-weight: normal;
+}

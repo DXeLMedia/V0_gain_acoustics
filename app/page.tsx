@@ -427,7 +427,13 @@ export default function HomePage() {
 
         <Dialog open={picturesModalOpen} onOpenChange={setPicturesModalOpen}>
           <DialogContent className="max-w-6xl h-[80vh] bg-transparent border-none p-0">
-            <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02} />
+            <CircularGallery
+              bend={0}
+              textColor="#ffffff"
+              borderRadius={0.05}
+              scrollEase={0.02}
+              textClassName="gallery-image-text"
+            />
           </DialogContent>
         </Dialog>
         <ScrollToTop />

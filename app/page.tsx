@@ -73,7 +73,7 @@ export default function HomePage() {
           }`}
         >
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="flex items-center justify-between h-20">
+            <div className="flex items-center justify-between h-40">
               <div className="flex items-center fluid-animate opacity-0 translate-x-[-30px]">
                 <a href="#home">
                   <img src="/GASLogoI_25.png" alt="Gain Acoustics" className="h-[150px] w-[150px]" />

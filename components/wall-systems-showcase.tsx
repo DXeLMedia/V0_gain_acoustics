@@ -304,6 +304,7 @@ export function WallSystemsShowcase() {
                 className="w-full h-64 object-cover rounded-lg shadow-lg hover-lift"
               />
               <p className="text-sm text-muted-foreground text-center">Warm tone collection</p>
+            </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <div className="space-y-4">
               <div

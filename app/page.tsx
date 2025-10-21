@@ -10,6 +10,7 @@ import { WallSystemsShowcase } from "@/components/wall-systems-showcase"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import CircularGallery from "@/components/ui/CircularGallery"
 import { ScrollToTop } from "@/components/ui/scroll-to-top"
+import { Reviews } from "@/components/reviews"
 
 export default function HomePage() {
   const [videoModalOpen, setVideoModalOpen] = useState(false)
@@ -348,6 +349,7 @@ export default function HomePage() {
           </div>
         </section>
 
+        <Reviews />
         <section id="contact" className="py-24 bg-background fluid-animate opacity-0 translate-y-[50px]">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-start">

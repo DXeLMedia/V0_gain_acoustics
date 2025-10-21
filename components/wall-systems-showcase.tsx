@@ -4,6 +4,8 @@ import { useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import ImageTrail from "@/components/ImageTrail"
+import { Dialog, DialogContent } from "@/components/ui/dialog"
+import CircularGallery from "@/components/ui/CircularGallery"
 import "@/components/ImageTrail.css"
 
 const vulcanImages = [
@@ -46,6 +48,48 @@ const vulcanImages = [
   "/VULCAN/Wasabi 49.png",
   "/VULCAN/Woodland 04.png",
   "/VULCAN/navy-blue-fabric-texture.png",
+]
+
+const vulcanGalleryImages = [
+  { image: "/VULCAN/Airforce 51.png", text: "Airforce 51" },
+  { image: "/VULCAN/Antarctic 3013.png", text: "Antarctic 3013" },
+  { image: "/VULCAN/Atlanis 3011.png", text: "Atlanis 3011" },
+  { image: "/VULCAN/Bahama 26.png", text: "Bahama 26" },
+  { image: "/VULCAN/Blonde 21.png", text: "Blonde 21" },
+  { image: "/VULCAN/Brick 12.png", text: "Brick 12" },
+  { image: "/VULCAN/Captivate 3004.jpg", text: "Captivate 3004" },
+  { image: "/VULCAN/Cobalt 50.png", text: "Cobalt 50" },
+  { image: "/VULCAN/DK Claret 31.jpg", text: "DK Claret 31" },
+  { image: "/VULCAN/Dive 3012.png", text: "Dive 3012" },
+  { image: "/VULCAN/Dusk 40png.png", text: "Dusk 40" },
+  { image: "/VULCAN/Eucalyptus 3009.png", text: "Eucalyptus 3009" },
+  { image: "/VULCAN/Fennel 60.png", text: "Fennel 60" },
+  { image: "/VULCAN/Fire 42.png", text: "Fire 42" },
+  { image: "/VULCAN/Garnet 03.png", text: "Garnet 03" },
+  { image: "/VULCAN/Grape 56.jpg", text: "Grape 56" },
+  { image: "/VULCAN/Hyacinth 02.png", text: "Hyacinth 02" },
+  { image: "/VULCAN/Lime 06.png", text: "Lime 06" },
+  { image: "/VULCAN/Mamba 47.png", text: "Mamba 47" },
+  { image: "/VULCAN/Midnight 06.png", text: "Midnight 06" },
+  { image: "/VULCAN/New England 3008.png", text: "New England 3008" },
+  { image: "/VULCAN/Peacock 59.png", text: "Peacock 59" },
+  { image: "/VULCAN/Pesto 46.png", text: "Pesto 46" },
+  { image: "/VULCAN/Purity 3002.jpg", text: "Purity 3002" },
+  { image: "/VULCAN/Rose 37.png", text: "Rose 37" },
+  { image: "/VULCAN/Roux 20.png", text: "Roux 20" },
+  { image: "/VULCAN/Rust 05.png", text: "Rust 05" },
+  { image: "/VULCAN/Sable 22.png", text: "Sable 22" },
+  { image: "/VULCAN/Sage 29.png", text: "Sage 29" },
+  { image: "/VULCAN/Salt 55.png", text: "Salt 55" },
+  { image: "/VULCAN/Sand 53.jpg", text: "Sand 53" },
+  { image: "/VULCAN/Sapphire 58.png", text: "Sapphire 58" },
+  { image: "/VULCAN/Skye 57.png", text: "Skye 57" },
+  { image: "/VULCAN/Soviet 45.png", text: "Soviet 45" },
+  { image: "/VULCAN/Tendril 3006.png", text: "Tendril 3006" },
+  { image: "/VULCAN/Tutu 3003.jpg", text: "Tutu 3003" },
+  { image: "/VULCAN/Wasabi 49.png", text: "Wasabi 49" },
+  { image: "/VULCAN/Woodland 04.png", text: "Woodland 04" },
+  { image: "/VULCAN/navy-blue-fabric-texture.png", text: "Navy Blue Fabric" },
 ]
 
 const fabricAndFeltImages = [
@@ -128,6 +172,7 @@ const colorOptions = [
 
 export function WallSystemsShowcase() {
   const [selectedColor, setSelectedColor] = useState(0)
+  const [galleryModalOpen, setGalleryModalOpen] = useState(false)
 
   const nextColor = () => {
     setSelectedColor((prev) => (prev + 1) % colorOptions.length)
@@ -297,7 +342,7 @@ export function WallSystemsShowcase() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div id="fabric-felt-tile" className="space-y-4">
+            <div id="fabric-felt-tile" className="space-y-4" onClick={() => setGalleryModalOpen(true)}>
               <img
                 src="/VULCAN/Soviet 45.png"
                 alt="Vulcan Range"
@@ -316,6 +361,11 @@ export function WallSystemsShowcase() {
           </div>
         </div>
       </div>
+      <Dialog open={galleryModalOpen} onOpenChange={setGalleryModalOpen}>
+        <DialogContent className="max-w-6xl h-[80vh] bg-transparent border-none p-0">
+          <CircularGallery items={vulcanGalleryImages} bend={0} />
+        </DialogContent>
+      </Dialog>
     </section>
   )
 }

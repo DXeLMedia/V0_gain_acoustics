@@ -9,12 +9,14 @@ const reviewsData: Review[] = [
     details: 'Local Guide·14 reviews·1 photo',
     reviewText: 'Neil was very accommodating in ensuring that we got our acoustic panels exactly as we needed them. Swift manufacture and delivery, with great communication throughout. Will definitely use them again if we need more acoustic treatment in future. Thanks!',
     date: 'a month ago',
+    liked: true,
   },
   {
     author: 'Motar Mohidien',
     details: '3 reviews',
     reviewText: 'Neil did an amazing job on our Studio at In The Black records in Century City. He always goes the extra mile to make sure that his customer is more than happy. 100% would recommend him!',
     date: '4 months ago',
+    liked: true,
   },
   {
     author: 'Apollo Ray Music',
@@ -36,9 +38,12 @@ export const Reviews: React.FC = () => {
   };
 
   return (
-    <section className="py-12 bg-gray-50 dark:bg-gray-900">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-8">Reviews</h2>
+    <section id="reviews" className="py-24 bg-muted/30 fluid-animate opacity-0 translate-y-[50px]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="text-center space-y-6 mb-20 cascade-animate opacity-0 translate-y-[30px]">
+          <h2 className="heading-secondary text-4xl lg:text-5xl text-foreground">Reviews</h2>
+          <div className="section-divider max-w-20 mx-auto"></div>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {reviewsData.map((review, index) => (
             <ReviewCard key={index} review={review} onClick={() => openModal(review)} />

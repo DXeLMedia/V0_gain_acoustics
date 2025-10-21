@@ -1,24 +1,12 @@
 
 import React from 'react';
 import { Review } from './review-card';
+import { StarIcon } from './star-icon';
 
 interface ReviewModalProps {
   review: Review | null;
   onClose: () => void;
 }
-
-const StarIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-5 w-5 text-yellow-400"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-  >
-    <path
-      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-    />
-  </svg>
-);
 
 export const ReviewModal: React.FC<ReviewModalProps> = ({ review, onClose }) => {
   if (!review) return null;
@@ -40,15 +28,17 @@ export const ReviewModal: React.FC<ReviewModalProps> = ({ review, onClose }) => 
         </div>
         <div className="flex mb-4">
           {[...Array(5)].map((_, i) => (
-            <StarIcon key={i} />
+            <StarIcon key={i} className="h-5 w-5 text-yellow-400" />
           ))}
         </div>
         <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">{review.reviewText}</p>
         <p className="text-md text-gray-500 dark:text-gray-400">{review.date}</p>
-        <div className="flex items-center text-gray-500 dark:text-gray-400">
-          <span className="mr-1">🙏</span>
-          <span>1</span>
-        </div>
+        {review.liked && (
+          <div className="flex items-center text-gray-500 dark:text-gray-400">
+            <span className="mr-1">🙏</span>
+            <span>1</span>
+          </div>
+        )}
         <button
           onClick={onClose}
           className="mt-6 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"

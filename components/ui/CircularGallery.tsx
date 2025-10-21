@@ -473,7 +473,7 @@ class App {
 
   createMedias(
     items: { image: string; text: string }[] | undefined,
-    bend: number = 1,
+    bend: number = 0,
     textColor: string,
     borderRadius: number,
     font: string

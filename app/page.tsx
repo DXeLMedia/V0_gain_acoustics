@@ -76,7 +76,7 @@ export default function HomePage() {
             <div className="flex items-center justify-between h-20">
               <div className="flex items-center fluid-animate opacity-0 translate-x-[-30px]">
                 <a href="#home">
-                  <img src="/GASLogoI_25.png" alt="Gain Acoustics" className="h-12" />
+                  <img src="/GASLogoI_25.png" alt="Gain Acoustics" className="h-[150px] w-[150px]" />
                 </a>
               </div>
               <nav className="hidden lg:flex items-center space-x-8">
@@ -283,23 +283,15 @@ export default function HomePage() {
                 {
                   title: "Manufacturing Excellence",
                   description:
-                    "Our state-of-the-art manufacturing facility produces high-quality acoustic panels using advanced printing technology and premium materials. Each panel is crafted to meet exact specifications for both acoustic performance and visual appeal.",
-                  features: [
-                    "Large format printing capabilities",
-                    "Custom sizing and shapes",
-                    "Premium acoustic materials",
-                  ],
+                    "Our state-of-the-art manufacturing facility produces high-quality acoustic panels using advanced printing technology and premium materials. Each panel is crafted to meet exact specifications for both acoustic performance and visual appeal.\n\n⦁\tLarge format printing capabilities\n⦁\tCustom sizing and shapes\n⦁\tPremium acoustic materials",
+                  features: [],
                   delay: 1,
                 },
                 {
                   title: "Professional Installation",
                   description:
-                    "Our experienced installation team ensures perfect placement and optimal acoustic performance. We handle projects of all sizes, from single rooms to large commercial spaces, with meticulous attention to detail.",
-                  features: [
-                    "Site assessment and planning",
-                    "Professional installation team",
-                    "Post-installation support",
-                  ],
+                    "Our experienced installation team ensures perfect placement and optimal acoustic performance. We handle projects of all sizes, from single rooms to large commercial spaces, with meticulous attention to detail.\n\n⦁\tSite assessment and planning\n⦁\tProfessional installation team\n⦁\tPost-installation support",
+                  features: [],
                   delay: 2,
                 },
               ].map((service, index) => (

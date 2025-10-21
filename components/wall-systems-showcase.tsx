@@ -3,8 +3,14 @@
 import { useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import ImageTrail from "@/components/ImageTrail"
-import "@/components/ImageTrail.css"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import CircularGallery from "@/components/ui/CircularGallery"
 
 const vulcanImages = [
   "/VULCAN/Airforce 51.png",
@@ -48,31 +54,36 @@ const vulcanImages = [
   "/VULCAN/navy-blue-fabric-texture.png",
 ]
 
-const fabricAndFeltImages = [
-  "/FABRIC & FELT/Black Felt.png",
-  "/FABRIC & FELT/Crimson Fabric.png",
-  "/FABRIC & FELT/Dark Blue Fabric.png",
-  "/FABRIC & FELT/Grey Felt.png",
-  "/FABRIC & FELT/Maroon Fabric.png",
-  "/FABRIC & FELT/Salmon Fabric.png",
-  "/FABRIC & FELT/Swatch 12.png",
-  "/FABRIC & FELT/Swatch 13.png",
-  "/FABRIC & FELT/Swatch 14.png",
-  "/FABRIC & FELT/Swatch 15.png",
-  "/FABRIC & FELT/Swatch 16.png",
-  "/FABRIC & FELT/Swatch 17.png",
-  "/FABRIC & FELT/Swatch 18.png",
-  "/FABRIC & FELT/Swatch 19.png",
-  "/FABRIC & FELT/Swatch 32.png",
-  "/FABRIC & FELT/Swatch 33.png",
-  "/FABRIC & FELT/Swatch 34.png",
-  "/FABRIC & FELT/Swatch 35.png",
-  "/FABRIC & FELT/Swatch 36.png",
-  "/FABRIC & FELT/Swatch 38.png",
-  "/FABRIC & FELT/Swatch 41.png",
-  "/FABRIC & FELT/Swatch 60.png",
-  "/FABRIC & FELT/Swatch 62.png",
-  "/FABRIC & FELT/White Felt.png",
+const vulcanImagesData = vulcanImages.map((image) => {
+    const text = image.split("/").pop()?.split(".")[0] || ""
+    return { image, text }
+})
+
+const fabricAndFeltImagesData = [
+    { image: "/FABRIC & FELT/Black Felt.png", text: "Black Felt" },
+    { image: "/FABRIC & FELT/Crimson Fabric.png", text: "Crimson Fabric" },
+    { image: "/FABRIC & FELT/Dark Blue Fabric.png", text: "Dark Blue Fabric" },
+    { image: "/FABRIC & FELT/Grey Felt.png", text: "Grey Felt" },
+    { image: "/FABRIC & FELT/Maroon Fabric.png", text: "Maroon Fabric" },
+    { image: "/FABRIC & FELT/Salmon Fabric.png", text: "Salmon Fabric" },
+    { image: "/FABRIC & FELT/Swatch 12.png", text: "Swatch 12" },
+    { image: "/FABRIC & FELT/Swatch 13.png", text: "Swatch 13" },
+    { image: "/FABRIC & FELT/Swatch 14.png", text: "Swatch 14" },
+    { image: "/FABRIC & FELT/Swatch 15.png", text: "Swatch 15" },
+    { image: "/FABRIC & FELT/Swatch 16.png", text: "Swatch 16" },
+    { image: "/FABRIC & FELT/Swatch 17.png", text: "Swatch 17" },
+    { image: "/FABRIC & FELT/Swatch 18.png", text: "Swatch 18" },
+    { image: "/FABRIC & FELT/Swatch 19.png", text: "Swatch 19" },
+    { image: "/FABRIC & FELT/Swatch 32.png", text: "Swatch 32" },
+    { image: "/FABRIC & FELT/Swatch 33.png", text: "Swatch 33" },
+    { image: "/FABRIC & FELT/Swatch 34.png", text: "Swatch 34" },
+    { image: "/FABRIC & FELT/Swatch 35.png", text: "Swatch 35" },
+    { image: "/FABRIC & FELT/Swatch 36.png", text: "Swatch 36" },
+    { image: "/FABRIC & FELT/Swatch 38.png", text: "Swatch 38" },
+    { image: "/FABRIC & FELT/Swatch 41.png", text: "Swatch 41" },
+    { image: "/FABRIC & FELT/Swatch 60.png", text: "Swatch 60" },
+    { image: "/FABRIC & FELT/Swatch 62.png", text: "Swatch 62" },
+    { image: "/FABRIC & FELT/White Felt.png", text: "White Felt" },
 ]
 
 const colorOptions = [
@@ -128,6 +139,7 @@ const colorOptions = [
 
 export function WallSystemsShowcase() {
   const [selectedColor, setSelectedColor] = useState(0)
+  const [isGalleryOpen, setGalleryOpen] = useState(false)
 
   const nextColor = () => {
     setSelectedColor((prev) => (prev + 1) % colorOptions.length)
@@ -298,36 +310,41 @@ export function WallSystemsShowcase() {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div id="fabric-felt-tile" className="space-y-4">
-              <img
-                src="/color-swatches-1.jpg"
-                alt="Color swatches collection 1"
-                className="w-full h-64 object-cover rounded-lg shadow-lg hover-lift"
-              />
-              <p className="text-sm text-muted-foreground text-center">Warm tone collection</p>
+              <Dialog open={isGalleryOpen} onOpenChange={setGalleryOpen}>
+                <DialogTrigger asChild>
+                  <button className="w-full text-left">
+                    <img
+                      src="/color-swatches-1.jpg"
+                      alt="Color swatches collection 1"
+                      className="w-full h-64 object-cover rounded-lg shadow-lg hover-lift"
+                    />
+                    <p className="text-sm text-muted-foreground text-center mt-2">Warm tone collection</p>
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl h-3/4">
+                  <DialogHeader>
+                    <DialogTitle>Fabric & Felt Range</DialogTitle>
+                  </DialogHeader>
+                  <div className="h-full w-full">
+                    <CircularGallery items={fabricAndFeltImagesData} bend={0} font="bold 30px Poppins" />
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <div className="space-y-4">
               <div
                 className="w-full h-64 rounded-lg shadow-lg hover-lift"
-                style={{
-                  backgroundImage: `url('/VULCAN/Fire 42.png')`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
               >
-                <ImageTrail items={vulcanImages} variant={7} />
+                <CircularGallery items={vulcanImagesData} bend={0} font="bold 30px Poppins" />
               </div>
               <p className="text-sm text-muted-foreground text-center">Vulcan Range</p>
             </div>
             <div className="space-y-4">
               <div
                 className="w-full h-64 rounded-lg shadow-lg hover-lift"
-                style={{
-                  backgroundImage: `url('/FABRIC & FELT/Swatch 62.png')`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
               >
-                <ImageTrail items={fabricAndFeltImages} variant={7} />
+                <CircularGallery items={fabricAndFeltImagesData} bend={0} font="bold 30px Poppins" />
               </div>
               <p className="text-sm text-muted-foreground text-center">Fabric & Felt Range</p>
             </div>

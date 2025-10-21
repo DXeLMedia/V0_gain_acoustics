@@ -3,12 +3,10 @@
 import { useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import ImageTrail from "@/components/ImageTrail"
-import "@/components/ImageTrail.css"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import CircularGallery from "@/components/ui/CircularGallery"
 
-const vulcanImages = [
+const vulcanImagesRaw = [
   "/VULCAN/Airforce 51.png",
   "/VULCAN/Antarctic 3013.png",
   "/VULCAN/Atlanis 3011.png",
@@ -77,6 +75,11 @@ const fabricAndFeltImagesRaw = [
   "/FABRIC & FELT/White Felt.png",
 ]
 
+const vulcanImages = vulcanImagesRaw.map(image => ({
+  image,
+  text: image.split("/").pop()?.split(".")[0] || "",
+}))
+
 const fabricAndFeltImages = fabricAndFeltImagesRaw.map(image => ({
   image,
   text: image.split("/").pop()?.split(".")[0] || "",
@@ -135,6 +138,7 @@ const colorOptions = [
 
 export function WallSystemsShowcase() {
   const [selectedColor, setSelectedColor] = useState(0)
+  const [isVulcanGalleryOpen, setIsVulcanGalleryOpen] = useState(false)
   const [isFabricGalleryOpen, setIsFabricGalleryOpen] = useState(false)
 
   const nextColor = () => {
@@ -304,52 +308,48 @@ export function WallSystemsShowcase() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <div id="fabric-felt-tile" className="space-y-4">
-                <img
-                  src="/color-swatches-1.jpg"
-                  alt="Color swatches collection 1"
-                  className="w-full h-64 object-cover rounded-lg shadow-lg hover-lift"
-                />
-                <p className="text-sm text-muted-foreground text-center">Warm tone collection</p>
+              <div
+                className="space-y-4 cursor-pointer"
+                onClick={() => setIsVulcanGalleryOpen(true)}
+              >
+                <div
+                  className="w-full h-64 rounded-lg shadow-lg hover-lift"
+                  style={{
+                    backgroundImage: `url('/VULCAN/Fire 42.png')`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                ></div>
+                <p className="text-sm text-muted-foreground text-center">Vulcan Range</p>
               </div>
-              <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div className="space-y-4">
-                  <div
-                    className="w-full h-64 rounded-lg shadow-lg hover-lift"
-                    style={{
-                      backgroundImage: `url('/VULCAN/Fire 42.png')`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                  >
-                    <ImageTrail items={vulcanImages} variant={7} />
-                  </div>
-                  <p className="text-sm text-muted-foreground text-center">Vulcan Range</p>
-                </div>
-                <div className="space-y-4 cursor-pointer" onClick={() => setIsFabricGalleryOpen(true)}>
-                  <div
-                    className="w-full h-64 rounded-lg shadow-lg hover-lift"
-                    style={{
-                      backgroundImage: `url('/FABRIC & FELT/Swatch 62.png')`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                  ></div>
-                  <p className="text-sm text-muted-foreground text-center">Fabric & Felt Range</p>
-                </div>
-                <div id="vulcan-range" className="space-y-4">
-                  <img
-                    src="/modern-restaurant-interior-with-acoustic-panels-an.png"
-                    alt="Vulcan textured acoustic panels"
-                    className="w-full h-64 object-cover rounded-lg shadow-lg hover-lift"
-                  />
-                  <p className="text-sm text-muted-foreground text-center">Vulcan Range</p>
-                </div>
+              <div
+                className="space-y-4 cursor-pointer"
+                onClick={() => setIsFabricGalleryOpen(true)}
+              >
+                <div
+                  className="w-full h-64 rounded-lg shadow-lg hover-lift"
+                  style={{
+                    backgroundImage: `url('/FABRIC & FELT/Swatch 62.png')`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                ></div>
+                <p className="text-sm text-muted-foreground text-center">Fabric & Felt Range</p>
               </div>
             </div>
           </div>
         </div>
       </section>
+      <Dialog open={isVulcanGalleryOpen} onOpenChange={setIsVulcanGalleryOpen}>
+        <DialogContent className="max-w-6xl h-[80vh] bg-transparent border-none p-0">
+          <CircularGallery
+            items={vulcanImages}
+            bend={0}
+            textColor="#ffffff"
+            font="bold 30px Poppins"
+          />
+        </DialogContent>
+      </Dialog>
       <Dialog open={isFabricGalleryOpen} onOpenChange={setIsFabricGalleryOpen}>
         <DialogContent className="max-w-6xl h-[80vh] bg-transparent border-none p-0">
           <CircularGallery

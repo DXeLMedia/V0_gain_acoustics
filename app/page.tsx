@@ -8,7 +8,7 @@ import { Phone, Mail, ArrowRight, ChevronDown, Play, Volume2, Headphones, CheckC
 import { useEffect, useState, useRef } from "react"
 import { WallSystemsShowcase } from "@/components/wall-systems-showcase"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
-import CircularGallery from "@/components/ui/CircularGallery"
+import { CircularGallery } from "@/components/ui/CircularGallery"
 import { ScrollToTop } from "@/components/ui/scroll-to-top"
 
 export default function HomePage() {
@@ -427,7 +427,13 @@ export default function HomePage() {
 
         <Dialog open={picturesModalOpen} onOpenChange={setPicturesModalOpen}>
           <DialogContent className="max-w-6xl h-[80vh] bg-transparent border-none p-0">
-            <CircularGallery bend={0} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02} font="bold 30px Poppins" />
+            <CircularGallery
+              bend={0}
+              textColor="#ffffff"
+              borderRadius={0.05}
+              scrollEase={0.02}
+              textStyle={{ fontFamily: "Poppins", fontWeight: "bold", fontSize: "30px" }}
+            />
           </DialogContent>
         </Dialog>
         <ScrollToTop />

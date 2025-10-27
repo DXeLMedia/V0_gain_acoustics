@@ -103,7 +103,7 @@ export default function HomePage() {
         <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="https://gainacousticssolutions.com/wp-content/uploads/2024/04/img_2260.jpg"
+              src="/img_2260.jpg"
               alt="Acoustic panel installation"
               className="w-full h-full object-cover parallax-smooth transition-transform duration-700 ease-out"
               style={{ transform: `translateY(${scrollY * 0.3}px) scale(${1 + scrollY * 0.0002})` }}

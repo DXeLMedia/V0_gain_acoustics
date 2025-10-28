@@ -11,6 +11,24 @@ import { Dialog, DialogContent } from "@/components/ui/dialog"
 import CircularGallery from "@/components/ui/CircularGallery"
 import { ScrollToTop } from "@/components/ui/scroll-to-top"
 import { Reviews } from "@/components/reviews"
+import LogoLoop from "@/components/ui/LogoLoop"
+
+const imageLogos = [
+  { src: "/Client_Logos/1.png", alt: "Modular" },
+  { src: "/Client_Logos/2.png", alt: "M&M Music Academy" },
+  { src: "/Client_Logos/3.png", alt: "In Fusion" },
+  { src: "/Client_Logos/4.png", alt: "Royal Cape Yacht Club" },
+  { src: "/Client_Logos/5.png", alt: "XAGO" },
+  { src: "/Client_Logos/6.png", alt: "Fools Gold" },
+  { src: "/Client_Logos/7.png", alt: "Wimmy" },
+  { src: "/Client_Logos/8.png", alt: "Resource Plus" },
+  { src: "/Client_Logos/9.png", alt: "Vitanova International" },
+  { src: "/Client_Logos/10.png", alt: "Desmond Tutu and Leah foundation" },
+  { src: "/Client_Logos/11.png", alt: "OutProsys" },
+  { src: "/Client_Logos/12.png", alt: "Byte Orbit" },
+  { src: "/Client_Logos/13.png", alt: "Impact.com" },
+  { src: "/Client_Logos/14.png", alt: "QueLinda Restaurant" },
+]
 
 export default function HomePage() {
   const [videoModalOpen, setVideoModalOpen] = useState(false)
@@ -350,6 +368,20 @@ export default function HomePage() {
         </section>
 
         <Reviews />
+        <div className="py-24">
+          <LogoLoop
+            logos={imageLogos}
+            speed={120}
+            direction="left"
+            logoHeight={48}
+            gap={40}
+            pauseOnHover
+            scaleOnHover
+            fadeOut
+            fadeOutColor="#ffffff"
+            ariaLabel="Technology partners"
+          />
+        </div>
         <section id="contact" className="py-24 bg-background fluid-animate opacity-0 translate-y-[50px]">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-start">

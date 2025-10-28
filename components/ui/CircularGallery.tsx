@@ -406,6 +406,7 @@ class App {
   screen!: { width: number; height: number };
   viewport!: { width: number; height: number };
   raf: number = 0;
+  resizeObserver!: ResizeObserver;
 
   boundOnResize!: () => void;
   boundOnWheel!: (e: Event) => void;
@@ -600,7 +601,10 @@ class App {
     this.boundOnTouchDown = this.onTouchDown.bind(this);
     this.boundOnTouchMove = this.onTouchMove.bind(this);
     this.boundOnTouchUp = this.onTouchUp.bind(this);
-    window.addEventListener('resize', this.boundOnResize);
+
+    this.resizeObserver = new ResizeObserver(this.boundOnResize);
+    this.resizeObserver.observe(this.container);
+
     this.container.addEventListener('mousewheel', this.boundOnWheel);
     this.container.addEventListener('wheel', this.boundOnWheel);
     this.container.addEventListener('mousedown', this.boundOnTouchDown);
@@ -609,7 +613,11 @@ class App {
 
   destroy() {
     window.cancelAnimationFrame(this.raf);
-    window.removeEventListener('resize', this.boundOnResize);
+
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+    }
+
     this.container.removeEventListener('mousewheel', this.boundOnWheel);
     this.container.removeEventListener('wheel', this.boundOnWheel);
     this.container.removeEventListener('mousedown', this.boundOnTouchDown);

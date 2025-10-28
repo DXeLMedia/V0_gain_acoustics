@@ -2,6 +2,24 @@
 import React from 'react';
 import { ReviewCard, Review } from './ui/review-card';
 import { ReviewModal } from './ui/review-modal';
+import LogoLoop from "@/components/ui/LogoLoop"
+
+const imageLogos = [
+  { src: "/Client_Logos/1.png", alt: "Modular", title: "Modular" },
+  { src: "/Client_Logos/2.png", alt: "M&M Music Academy", title: "M&M Music Academy" },
+  { src: "/Client_Logos/3.png", alt: "In Fusion", title: "In Fusion" },
+  { src: "/Client_Logos/4.png", alt: "Royal Cape Yacht Club", title: "Royal Cape Yacht Club" },
+  { src: "/Client_Logos/5.png", alt: "XAGO", title: "XAGO" },
+  { src: "/Client_Logos/6.png", alt: "Fools Gold", title: "Fools Gold" },
+  { src: "/Client_Logos/7.png", alt: "Wimmy", title: "Wimmy" },
+  { src: "/Client_Logos/8.png", alt: "Resource Plus", title: "Resource Plus" },
+  { src: "/Client_Logos/9.png", alt: "Vitanova International", title: "Vitanova International" },
+  { src: "/Client_Logos/10.png", alt: "Desmond Tutu and Leah foundation", title: "Desmond Tutu and Leah foundation" },
+  { src: "/Client_Logos/11.png", alt: "OutProsys", title: "OutProsys" },
+  { src: "/Client_Logos/12.png", alt: "Byte Orbit", title: "Byte Orbit" },
+  { src: "/Client_Logos/13.png", alt: "Impact.com", title: "Impact.com" },
+  { src: "/Client_Logos/14.png", alt: "QueLinda Restaurant", title: "QueLinda Restaurant" },
+]
 
 const reviewsData: Review[] = [
   {
@@ -50,6 +68,19 @@ export const Reviews: React.FC = () => {
           ))}
         </div>
         <ReviewModal review={selectedReview} onClose={closeModal} />
+        <div className="py-24">
+          <LogoLoop
+            logos={imageLogos}
+            speed={80}
+            direction="left"
+            logoHeight={60}
+            gap={40}
+            pauseOnHover
+            scaleOnHover
+            fadeOut
+            ariaLabel="Technology partners"
+          />
+        </div>
       </div>
     </section>
   );

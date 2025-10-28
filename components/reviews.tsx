@@ -73,7 +73,7 @@ export const Reviews: React.FC = () => {
             logos={imageLogos}
             speed={80}
             direction="left"
-            logoHeight={60}
+            logoHeight={120}
             gap={40}
             pauseOnHover
             scaleOnHover

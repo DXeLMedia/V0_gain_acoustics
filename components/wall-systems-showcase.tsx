@@ -3,9 +3,11 @@
 import { useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Dialog, DialogContent } from "@/components/ui/dialog"
+import CircularGallery from "@/components/ui/CircularGallery"
 import { GalleryModal } from "@/components/ui/gallery-modal"
 
-const vulcanImages = [
+const vulcanImagesRaw = [
   "/VULCAN/Airforce 51.png",
   "/VULCAN/Antarctic 3013.png",
   "/VULCAN/Atlanis 3011.png",
@@ -47,7 +49,7 @@ const vulcanImages = [
   "/VULCAN/navy-blue-fabric-texture.png",
 ]
 
-const fabricAndFeltImages = [
+const fabricAndFeltImagesRaw = [
   "/FABRIC & FELT/Black Felt.png",
   "/FABRIC & FELT/Crimson Fabric.png",
   "/FABRIC & FELT/Dark Blue Fabric.png",
@@ -73,6 +75,16 @@ const fabricAndFeltImages = [
   "/FABRIC & FELT/Swatch 62.png",
   "/FABRIC & FELT/White Felt.png",
 ]
+
+const vulcanImages = vulcanImagesRaw.map(image => ({
+  image,
+  text: image.split("/").pop()?.split(".")[0] || "",
+}))
+
+const fabricAndFeltImages = fabricAndFeltImagesRaw.map(image => ({
+  image,
+  text: image.split("/").pop()?.split(".")[0] || "",
+}))
 
 const colorOptions = [
   {
@@ -125,24 +137,17 @@ const colorOptions = [
   },
 ]
 
-const formatImages = (imagePaths: string[]) => {
-  return imagePaths.map((path) => ({
-    image: path,
-    text: path.split("/").pop()?.split(".")[0] || "",
-  }))
-}
-
 export function WallSystemsShowcase() {
   const [selectedColor, setSelectedColor] = useState(0)
   const [isVulcanGalleryOpen, setIsVulcanGalleryOpen] = useState(false)
   const [isFabricGalleryOpen, setIsFabricGalleryOpen] = useState(false)
 
   const nextColor = () => {
-    setSelectedColor((prev) => (prev + 1) % colorOptions.length)
+    setSelectedColor(prev => (prev + 1) % colorOptions.length)
   }
 
   const prevColor = () => {
-    setSelectedColor((prev) => (prev - 1 + colorOptions.length) % colorOptions.length)
+    setSelectedColor(prev => (prev - 1 + colorOptions.length) % colorOptions.length)
   }
 
   return (
@@ -315,7 +320,7 @@ export function WallSystemsShowcase() {
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
-                />
+                ></div>
                 <p className="text-sm text-muted-foreground text-center">Vulcan Range</p>
               </div>
               <div
@@ -329,23 +334,34 @@ export function WallSystemsShowcase() {
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
-                />
+                ></div>
                 <p className="text-sm text-muted-foreground text-center">Fabric & Felt Range</p>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <GalleryModal
-        isOpen={isVulcanGalleryOpen}
-        onClose={() => setIsVulcanGalleryOpen(false)}
-        items={formatImages(vulcanImages)}
-      />
-      <GalleryModal
-        isOpen={isFabricGalleryOpen}
-        onClose={() => setIsFabricGalleryOpen(false)}
-        items={formatImages(fabricAndFeltImages)}
-      />
+
+      <Dialog open={isVulcanGalleryOpen} onOpenChange={setIsVulcanGalleryOpen}>
+        <DialogContent className="max-w-6xl h-[80vh] bg-transparent border-none p-0">
+          <CircularGallery
+            items={vulcanImages}
+            bend={0}
+            textColor="#ffffff"
+            font="bold 30px Poppins"
+          />
+        </DialogContent>
+      </Dialog>
+      <Dialog open={isFabricGalleryOpen} onOpenChange={setIsFabricGalleryOpen}>
+        <DialogContent className="max-w-6xl h-[80vh] bg-transparent border-none p-0">
+          <CircularGallery
+            items={fabricAndFeltImages}
+            bend={0}
+            textColor="#ffffff"
+            font="bold 30px Poppins"
+          />
+        </DialogContent>
+      </Dialog>
     </>
   )
 }

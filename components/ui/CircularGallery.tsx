@@ -406,6 +406,7 @@ class App {
   screen!: { width: number; height: number };
   viewport!: { width: number; height: number };
   raf: number = 0;
+  resizeObserver!: ResizeObserver;
 
   boundOnResize!: () => void;
   boundOnWheel!: (e: Event) => void;
@@ -526,6 +527,11 @@ class App {
     this.isDown = true;
     this.scroll.position = this.scroll.current;
     this.start = 'touches' in e ? e.touches[0].clientX : e.clientX;
+
+    window.addEventListener('mousemove', this.boundOnTouchMove);
+    window.addEventListener('mouseup', this.boundOnTouchUp);
+    window.addEventListener('touchmove', this.boundOnTouchMove);
+    window.addEventListener('touchend', this.boundOnTouchUp);
   }
 
   onTouchMove(e: MouseEvent | TouchEvent) {
@@ -538,6 +544,11 @@ class App {
   onTouchUp() {
     this.isDown = false;
     this.onCheck();
+
+    window.removeEventListener('mousemove', this.boundOnTouchMove);
+    window.removeEventListener('mouseup', this.boundOnTouchUp);
+    window.removeEventListener('touchmove', this.boundOnTouchMove);
+    window.removeEventListener('touchend', this.boundOnTouchUp);
   }
 
   onWheel(e: Event) {
@@ -590,28 +601,27 @@ class App {
     this.boundOnTouchDown = this.onTouchDown.bind(this);
     this.boundOnTouchMove = this.onTouchMove.bind(this);
     this.boundOnTouchUp = this.onTouchUp.bind(this);
-    window.addEventListener('resize', this.boundOnResize);
-    window.addEventListener('mousewheel', this.boundOnWheel);
-    window.addEventListener('wheel', this.boundOnWheel);
-    window.addEventListener('mousedown', this.boundOnTouchDown);
-    window.addEventListener('mousemove', this.boundOnTouchMove);
-    window.addEventListener('mouseup', this.boundOnTouchUp);
-    window.addEventListener('touchstart', this.boundOnTouchDown);
-    window.addEventListener('touchmove', this.boundOnTouchMove);
-    window.addEventListener('touchend', this.boundOnTouchUp);
+
+    this.resizeObserver = new ResizeObserver(this.boundOnResize);
+    this.resizeObserver.observe(this.container);
+
+    this.container.addEventListener('mousewheel', this.boundOnWheel);
+    this.container.addEventListener('wheel', this.boundOnWheel);
+    this.container.addEventListener('mousedown', this.boundOnTouchDown);
+    this.container.addEventListener('touchstart', this.boundOnTouchDown);
   }
 
   destroy() {
     window.cancelAnimationFrame(this.raf);
-    window.removeEventListener('resize', this.boundOnResize);
-    window.removeEventListener('mousewheel', this.boundOnWheel);
-    window.removeEventListener('wheel', this.boundOnWheel);
-    window.removeEventListener('mousedown', this.boundOnTouchDown);
-    window.removeEventListener('mousemove', this.boundOnTouchMove);
-    window.removeEventListener('mouseup', this.boundOnTouchUp);
-    window.removeEventListener('touchstart', this.boundOnTouchDown);
-    window.removeEventListener('touchmove', this.boundOnTouchMove);
-    window.removeEventListener('touchend', this.boundOnTouchUp);
+
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+    }
+
+    this.container.removeEventListener('mousewheel', this.boundOnWheel);
+    this.container.removeEventListener('wheel', this.boundOnWheel);
+    this.container.removeEventListener('mousedown', this.boundOnTouchDown);
+    this.container.removeEventListener('touchstart', this.boundOnTouchDown);
     if (this.renderer && this.renderer.gl && this.renderer.gl.canvas.parentNode) {
       this.renderer.gl.canvas.parentNode.removeChild(this.renderer.gl.canvas as HTMLCanvasElement);
     }
@@ -630,7 +640,7 @@ interface CircularGalleryProps {
 
 export default function CircularGallery({
   items,
-  bend = 3,
+  bend = 0,
   textColor = '#ffffff',
   borderRadius = 0.05,
   font = 'bold 30px Figtree',

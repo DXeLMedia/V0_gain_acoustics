@@ -156,7 +156,7 @@ export default function HomePage() {
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  image: "/professional-recording-studio-with-acoustic-treatm.png",
+                  image: "/Page Images/img_2276.jpg",
                   icon: Volume2,
                   title: "Echo Reduction",
                   description:
@@ -164,7 +164,7 @@ export default function HomePage() {
                   delay: 1,
                 },
                 {
-                  image: "/modern-corporate-office-with-acoustic-ceiling-clou.png",
+                  image: "/Page Images/img_5284.jpeg",
                   icon: Headphones,
                   title: "Soundproofing",
                   description:
@@ -172,7 +172,7 @@ export default function HomePage() {
                   delay: 2,
                 },
                 {
-                  image: "/modern-office-space-with-acoustic-panels-installat.png",
+                  image: "/Page Images/img_8895.jpg",
                   icon: Play,
                   title: "Custom Panels",
                   description:

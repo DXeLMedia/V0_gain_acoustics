@@ -49,31 +49,22 @@ const vulcanImagesRaw = [
   "/VULCAN/navy-blue-fabric-texture.png",
 ]
 
-const fabricAndFeltImagesRaw = [
-  "/FABRIC & FELT/Black Felt.png",
-  "/FABRIC & FELT/Crimson Fabric.png",
-  "/FABRIC & FELT/Dark Blue Fabric.png",
-  "/FABRIC & FELT/Grey Felt.png",
-  "/FABRIC & FELT/Maroon Fabric.png",
-  "/FABRIC & FELT/Salmon Fabric.png",
-  "/FABRIC & FELT/Swatch 12.png",
-  "/FABRIC & FELT/Swatch 13.png",
-  "/FABRIC & FELT/Swatch 14.png",
-  "/FABRIC & FELT/Swatch 15.png",
-  "/FABRIC & FELT/Swatch 16.png",
-  "/FABRIC & FELT/Swatch 17.png",
-  "/FABRIC & FELT/Swatch 18.png",
-  "/FABRIC & FELT/Swatch 19.png",
-  "/FABRIC & FELT/Swatch 32.png",
-  "/FABRIC & FELT/Swatch 33.png",
-  "/FABRIC & FELT/Swatch 34.png",
-  "/FABRIC & FELT/Swatch 35.png",
-  "/FABRIC & FELT/Swatch 36.png",
-  "/FABRIC & FELT/Swatch 38.png",
-  "/FABRIC & FELT/Swatch 41.png",
-  "/FABRIC & FELT/Swatch 60.png",
-  "/FABRIC & FELT/Swatch 62.png",
-  "/FABRIC & FELT/White Felt.png",
+const miniMattImagesRaw = [
+  "/MINI MATT/Black DR001-5.png",
+  "/MINI MATT/DR001-169.png",
+  "/MINI MATT/Grey - DR100-49.png",
+  "/MINI MATT/Grey DR100-7.png",
+  "/MINI MATT/Jade-DR100 - 25.png",
+  "/MINI MATT/Mustard-DR001-151.png",
+  "/MINI MATT/Orange-DR001-17.png",
+  "/MINI MATT/Pink-DR001-126.png",
+  "/MINI MATT/Purple - DR001-111.png",
+  "/MINI MATT/Red DR100-6.png",
+  "/MINI MATT/White DR100-2.png",
+  "/MINI MATT/Yellow DR001-162.png",
+  "/MINI MATT/l blue - DR100-18.png",
+  "/MINI MATT/l green DR001-123.png",
+  "/MINI MATT/l pink - DR001-161.png",
 ]
 
 const vulcanImages = vulcanImagesRaw.map(image => ({
@@ -81,7 +72,7 @@ const vulcanImages = vulcanImagesRaw.map(image => ({
   text: image.split("/").pop()?.split(".")[0] || "",
 }))
 
-const fabricAndFeltImages = fabricAndFeltImagesRaw.map(image => ({
+const miniMattImages = miniMattImagesRaw.map(image => ({
   image,
   text: image.split("/").pop()?.split(".")[0] || "",
 }))
@@ -140,7 +131,7 @@ const colorOptions = [
 export function WallSystemsShowcase() {
   const [selectedColor, setSelectedColor] = useState(0)
   const [isVulcanGalleryOpen, setIsVulcanGalleryOpen] = useState(false)
-  const [isFabricGalleryOpen, setIsFabricGalleryOpen] = useState(false)
+  const [isMiniMattGalleryOpen, setIsMiniMattGalleryOpen] = useState(false)
 
   const nextColor = () => {
     setSelectedColor(prev => (prev + 1) % colorOptions.length)
@@ -325,17 +316,17 @@ export function WallSystemsShowcase() {
               </div>
               <div
                 className="space-y-4 cursor-pointer"
-                onClick={() => setIsFabricGalleryOpen(true)}
+                onClick={() => setIsMiniMattGalleryOpen(true)}
               >
                 <div
                   className="w-full h-64 rounded-lg shadow-lg hover-lift"
                   style={{
-                    backgroundImage: `url('/FABRIC & FELT/Swatch 62.png')`,
+                    backgroundImage: `url('/MINI MATT/Red DR100-6.png')`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
                 ></div>
-                <p className="text-sm text-muted-foreground text-center">Fabric & Felt Range</p>
+                <p className="text-sm text-muted-foreground text-center">Mini Matt</p>
               </div>
             </div>
           </div>
@@ -352,10 +343,10 @@ export function WallSystemsShowcase() {
           />
         </DialogContent>
       </Dialog>
-      <Dialog open={isFabricGalleryOpen} onOpenChange={setIsFabricGalleryOpen}>
+      <Dialog open={isMiniMattGalleryOpen} onOpenChange={setIsMiniMattGalleryOpen}>
         <DialogContent className="max-w-6xl h-[80vh] bg-transparent border-none p-0">
           <CircularGallery
-            items={fabricAndFeltImages}
+            items={miniMattImages}
             bend={0}
             textColor="#ffffff"
             font="bold 30px Poppins"

@@ -113,17 +113,6 @@ export default function HomePage() {
           </div>
 
           <div className="relative z-10 text-center max-w-5xl mx-auto px-6 leading-3 text-white">
-            <h1 className="heading-primary text-5xl lg:text-7xl text-foreground mb-8 text-balance">
-              <span className="inline-block cascade-animate opacity-0 translate-y-[40px] stagger-1 liquid-motion">
-                Acoustic
-              </span>{" "}
-              <span className="inline-block cascade-animate opacity-0 translate-y-[40px] stagger-2 liquid-motion">
-                Excellence
-              </span>
-              <span className="block text-primary mt-2 cascade-animate opacity-0 translate-y-[40px] stagger-3 liquid-motion">
-                Redefined
-              </span>
-            </h1>
             <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto text-refined mb-12 fluid-animate opacity-0 translate-y-[30px] stagger-4">
               We manufacture, deliver and install large format printed acoustic panels and supply various other acoustic solutions.
             </p>

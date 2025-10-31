@@ -214,7 +214,7 @@ export function WallSystemsShowcase() {
             <div className="space-y-8 lg:pl-8">
               <div className="space-y-6">
                 <h1 className="text-4xl lg:text-5xl font-light text-foreground heading-primary">
-                  Acoustic Wall Systems™
+                  Acoustic Wall Systems
                 </h1>
 
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -223,9 +223,7 @@ export function WallSystemsShowcase() {
                 </div>
 
                 <p className="text-lg text-foreground/80 leading-relaxed text-refined">
-                  Available in panels, baffles, or ceiling tiles, Acoustic Wall Systems™ is a high-performance acoustic
-                  solution that mimics timber. To ensure a natural, light and finish, we have hand-picked a selection of
-                  timber-look veneers—digitally printed onto the panel surface with a silk, water-based, UV cured ink.
+                  Available in ceiling clouds, foam panels and slattered acoustic panels which mimics timber. Enhance the atmosphere of your workspace with our diverse range of printed acoustic panels. Not only do these panels improve the acoustic properties of a room, but they also contribute to its overall aesthetic appeal.
                 </p>
               </div>
 

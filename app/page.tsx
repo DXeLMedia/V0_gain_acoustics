@@ -81,7 +81,7 @@ export default function HomePage() {
                 </a>
               </div>
               <nav className="hidden lg:flex items-center space-x-8">
-                {["Solutions", "Demo", "Services", "Contact"].map((item, index) => (
+                {["Solutions", "Gallery", "Services", "Contact"].map((item, index) => (
                   <a
                     key={item}
                     href={`#${item.toLowerCase()}`}
@@ -125,8 +125,7 @@ export default function HomePage() {
               </span>
             </h1>
             <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto text-refined mb-12 fluid-animate opacity-0 translate-y-[30px] stagger-4">
-              We manufacture, deliver and install large format printed acoustic panels for exceptional sound
-              environments that blend performance with stunning visual design.
+              We manufacture, deliver and install large format printed acoustic panels and supply various other acoustic solutions.
             </p>
             <div className="flex flex-col gap-6 justify-center text-zinc-50 sm:flex-row bg-transparent">
               <a href="#solutions">
@@ -172,7 +171,7 @@ export default function HomePage() {
                   icon: Volume2,
                   title: "Echo Reduction",
                   description:
-                    "Advanced acoustic ceiling clouds engineered for optimal sound control in professional environments with superior performance.",
+                    "When it comes to acoustic ceiling panels, our expertise lies in manufacturing, installation, and delivery. Our commitment to quality ensures that your acoustic needs are met with precision and excellence.",
                   delay: 1,
                 },
                 {
@@ -180,7 +179,7 @@ export default function HomePage() {
                   icon: Headphones,
                   title: "Soundproofing",
                   description:
-                    "Comprehensive acoustic solutions designed to create peaceful, productive spaces with exceptional sound isolation.",
+                    "At our company, we understand the importance of creating a space with optimal acoustics. This is why we offer a wide variety of acoustic solutions designed to enhance soundproofing and improve overall audibility. Whether you’re working on a residential, commercial, or industrial project.",
                   delay: 2,
                 },
                 {
@@ -188,7 +187,7 @@ export default function HomePage() {
                   icon: Play,
                   title: "Custom Panels",
                   description:
-                    "High-resolution printed acoustic panels that enhance both acoustics and aesthetics with stunning visual impact.",
+                    "Transform your music recording studio with our wide variety of custom acoustic panels. Our range includes top-quality bass traps and diffusers, meticulously designed to meet your specific acoustic needs. Whether you’re aiming to enhance clarity, reduce room modes, or achieve a balanced sound, our acoustic solutions are the perfect fusion of imagination and expertise.",
                   delay: 3,
                 },
               ].map((solution, index) => {
@@ -320,10 +319,10 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="demo" className="py-24 bg-muted/30 fluid-animate opacity-0 translate-y-[50px]">
+        <section id="gallery" className="py-24 bg-muted/30 fluid-animate opacity-0 translate-y-[50px]">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center space-y-6 mb-20 cascade-animate opacity-0 translate-y-[30px]">
-              <h2 className="heading-secondary text-4xl lg:text-5xl text-foreground">Installation Demo Content</h2>
+              <h2 className="heading-secondary text-4xl lg:text-5xl text-foreground">Gallery</h2>
               <div className="section-divider max-w-20 mx-auto"></div>
             </div>
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">

@@ -169,6 +169,146 @@ const installationImagesData = [
     description: "Acoustic panel installation.",
     image: "/INSTALLS/IMG_6276.JPG",
   },
+  {
+    name: "Installation 5442",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5442.JPG",
+  },
+  {
+    name: "Installation 5461",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5461.JPG",
+  },
+  {
+    name: "Installation 5488",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5488.JPG",
+  },
+  {
+    name: "Installation 5491",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5491.JPG",
+  },
+  {
+    name: "Installation 5493",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5493.JPG",
+  },
+  {
+    name: "Installation 5498",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5498.JPG",
+  },
+  {
+    name: "Installation 5513",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5513.JPG",
+  },
+  {
+    name: "Installation 5516",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5516.JPG",
+  },
+  {
+    name: "Installation 5520",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5520.JPG",
+  },
+  {
+    name: "Installation 5529",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5529.JPG",
+  },
+  {
+    name: "Installation 5530",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5530.JPG",
+  },
+  {
+    name: "Installation 5533",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5533.JPG",
+  },
+  {
+    name: "Installation 5534",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5534.JPG",
+  },
+  {
+    name: "Installation 5545",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5545.JPG",
+  },
+  {
+    name: "Installation 5561",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5561.JPG",
+  },
+  {
+    name: "Installation 5563",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5563.JPG",
+  },
+  {
+    name: "Installation 5569",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5569.JPG",
+  },
+  {
+    name: "Installation 5574",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5574.JPG",
+  },
+  {
+    name: "Installation 5593",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5593.JPG",
+  },
+  {
+    name: "Installation 5599",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5599.JPG",
+  },
+  {
+    name: "Installation 5610",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5610.JPG",
+  },
+  {
+    name: "Installation 5622",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5622.JPG",
+  },
+  {
+    name: "Installation 5629",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5629.JPG",
+  },
+  {
+    name: "Installation 5647",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5647.JPG",
+  },
+  {
+    name: "Installation 5648",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5648.JPG",
+  },
+  {
+    name: "Installation 5660",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5660.JPG",
+  },
+  {
+    name: "Installation 5663",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5663.JPG",
+  },
+  {
+    name: "Installation 5667",
+    description: "Slat Wall Installation",
+    image: "/INSTALLS/IMG_5667.JPG",
+  },
 ];
 
 export function WallSystemsShowcase() {

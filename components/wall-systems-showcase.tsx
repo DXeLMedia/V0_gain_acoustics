@@ -67,12 +67,48 @@ const miniMattImagesRaw = [
   "/MINI MATT/l pink - DR001-161.png",
 ]
 
+const foamRangeImagesRaw = [
+  "/FOAMRITE/TYPES/2InchPyramidFoamPanelBlue.png",
+  "/FOAMRITE/TYPES/2InchWedgeFoamPanelBlack.png",
+  "/FOAMRITE/TYPES/4-Inch-Pyramid-Foam-Panel-Red.png",
+  "/FOAMRITE/TYPES/4-Inch-Wedge-Foam-Panel-grey.png",
+  "/FOAMRITE/TYPES/Aureole-Panels-50-Charcoal.png",
+  "/FOAMRITE/TYPES/Convoluted-Foam-Panel-Ivory.png",
+  "/FOAMRITE/TYPES/Diffususion-Tiles.png",
+  "/FOAMRITE/TYPES/Hexagon-Ceiling-Panel-Blue.png",
+  "/FOAMRITE/TYPES/Noble-Bass-Trap-Latte.png",
+  "/FOAMRITE/TYPES/StudioPro-Bass-Trap-Black.png",
+]
+
+const slatWallImagesRaw = [
+  "/SLATWALL/Black Ash.JPG",
+  "/SLATWALL/Classic Oak (Black Felt).JPG",
+  "/SLATWALL/Classic Oak.JPG",
+  "/SLATWALL/Copper Oxide.JPG",
+  "/SLATWALL/English Walnut.JPG",
+  "/SLATWALL/Rustic Grey Oak.JPG",
+  "/SLATWALL/Rustic Smoked Oak.JPG",
+  "/SLATWALL/Snow.JPG",
+  "/SLATWALL/Walnut.JPG",
+  "/SLATWALL/Weathered Oak.JPG",
+]
+
 const vulcanImages = vulcanImagesRaw.map(image => ({
   image,
   text: image.split("/").pop()?.split(".")[0] || "",
 }))
 
 const miniMattImages = miniMattImagesRaw.map(image => ({
+  image,
+  text: image.split("/").pop()?.split(".")[0] || "",
+}))
+
+const foamRangeImages = foamRangeImagesRaw.map(image => ({
+  image,
+  text: image.split("/").pop()?.split(".")[0] || "",
+}))
+
+const slatWallImages = slatWallImagesRaw.map(image => ({
   image,
   text: image.split("/").pop()?.split(".")[0] || "",
 }))
@@ -139,6 +175,8 @@ export function WallSystemsShowcase() {
   const [selectedImage, setSelectedImage] = useState(0)
   const [isVulcanGalleryOpen, setIsVulcanGalleryOpen] = useState(false)
   const [isMiniMattGalleryOpen, setIsMiniMattGalleryOpen] = useState(false)
+  const [isFoamRangeGalleryOpen, setIsFoamRangeGalleryOpen] = useState(false)
+  const [isSlatWallGalleryOpen, setIsSlatWallGalleryOpen] = useState(false)
 
   const nextImage = () => {
     setSelectedImage(prev => (prev + 1) % installationImagesData.length)
@@ -292,6 +330,34 @@ export function WallSystemsShowcase() {
                 ></div>
                 <p className="text-sm text-muted-foreground text-center">Mini Matt</p>
               </div>
+              <div
+                className="space-y-4 cursor-pointer"
+                onClick={() => setIsFoamRangeGalleryOpen(true)}
+              >
+                <div
+                  className="w-full h-64 rounded-lg shadow-lg hover-lift"
+                  style={{
+                    backgroundImage: `url('/FOAMRITE/TYPES/2InchPyramidFoamPanelBlue.png')`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                ></div>
+                <p className="text-sm text-muted-foreground text-center">Foam Range</p>
+              </div>
+              <div
+                className="space-y-4 cursor-pointer"
+                onClick={() => setIsSlatWallGalleryOpen(true)}
+              >
+                <div
+                  className="w-full h-64 rounded-lg shadow-lg hover-lift"
+                  style={{
+                    backgroundImage: `url('/SLATWALL/Black Ash.JPG')`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                ></div>
+                <p className="text-sm text-muted-foreground text-center">Slat Wall Range</p>
+              </div>
             </div>
           </div>
         </div>
@@ -311,6 +377,26 @@ export function WallSystemsShowcase() {
         <DialogContent className="max-w-6xl h-[80vh] bg-transparent border-none p-0">
           <CircularGallery
             items={miniMattImages}
+            bend={0}
+            textColor="#ffffff"
+            font="bold 30px Poppins"
+          />
+        </DialogContent>
+      </Dialog>
+      <Dialog open={isFoamRangeGalleryOpen} onOpenChange={setIsFoamRangeGalleryOpen}>
+        <DialogContent className="max-w-6xl h-[80vh] bg-transparent border-none p-0 shadow-none">
+          <CircularGallery
+            items={foamRangeImages}
+            bend={0}
+            textColor="#ffffff"
+            font="bold 30px Poppins"
+          />
+        </DialogContent>
+      </Dialog>
+      <Dialog open={isSlatWallGalleryOpen} onOpenChange={setIsSlatWallGalleryOpen}>
+        <DialogContent className="max-w-6xl h-[80vh] bg-transparent border-none p-0">
+          <CircularGallery
+            items={slatWallImages}
             bend={0}
             textColor="#ffffff"
             font="bold 30px Poppins"

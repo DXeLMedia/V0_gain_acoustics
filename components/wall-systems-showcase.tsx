@@ -77,68 +77,75 @@ const miniMattImages = miniMattImagesRaw.map(image => ({
   text: image.split("/").pop()?.split(".")[0] || "",
 }))
 
-const colorOptions = [
+const installationImagesData = [
   {
-    name: "Forest Green",
-    color: "#2d4a3e",
-    description: "Deep forest tones for sophisticated spaces",
-    image: "/modern-office-space-with-acoustic-panels-installat.png",
+    name: "Installation 5747",
+    description: "Acoustic panel installation.",
+    image: "/INSTALLS/IMG_5747.JPG",
   },
   {
-    name: "Jaffa",
-    color: "#e67e22",
-    description: "Warm orange bringing energy and vibrancy",
-    image: "/modern-restaurant-interior-with-acoustic-panels-an.png",
+    name: "Installation 5748",
+    description: "Acoustic panel installation.",
+    image: "/INSTALLS/IMG_5748.JPG",
   },
   {
-    name: "Crimson",
-    color: "#c0392b",
-    description: "Bold red for dramatic impact",
-    image: "/professional-recording-studio-with-acoustic-treatm.png",
+    name: "Installation 5876",
+    description: "Acoustic panel installation.",
+    image: "/INSTALLS/IMG_5876.JPG",
   },
   {
-    name: "Teal",
-    color: "#16a085",
-    description: "Calming blue-green for modern environments",
-    image: "/modern-corporate-office-with-acoustic-ceiling-clou.png",
+    name: "Installation 5994",
+    description: "Acoustic panel installation.",
+    image: "/INSTALLS/IMG_5994.JPG",
   },
   {
-    name: "Plum",
-    color: "#8e44ad",
-    description: "Rich purple adding luxury and depth",
-    image: "/modern-office-space-with-acoustic-panels-installat.png",
+    name: "Installation 5995",
+    description: "Acoustic panel installation.",
+    image: "/INSTALLS/IMG_5995.JPG",
   },
   {
-    name: "Amber",
-    color: "#f39c12",
-    description: "Golden yellow for warmth and brightness",
-    image: "/modern-restaurant-interior-with-acoustic-panels-an.png",
+    name: "Installation 6241",
+    description: "Acoustic panel installation.",
+    image: "/INSTALLS/IMG_6241.JPG",
   },
   {
-    name: "Charcoal",
-    color: "#2c3e50",
-    description: "Classic dark tone for timeless elegance",
-    image: "/professional-recording-studio-with-acoustic-treatm.png",
+    name: "Installation 6243",
+    description: "Acoustic panel installation.",
+    image: "/INSTALLS/IMG_6243.JPG",
   },
   {
-    name: "Sage",
-    color: "#95a5a6",
-    description: "Soft gray-green for subtle sophistication",
-    image: "/modern-corporate-office-with-acoustic-ceiling-clou.png",
+    name: "Installation 6244",
+    description: "Acoustic panel installation.",
+    image: "/INSTALLS/IMG_6244.JPG",
   },
-]
+  {
+    name: "Installation 6274",
+    description: "Acoustic panel installation.",
+    image: "/INSTALLS/IMG_6274.JPG",
+  },
+  {
+    name: "Installation 6275",
+    description: "Acoustic panel installation.",
+    image: "/INSTALLS/IMG_6275.JPG",
+  },
+  {
+    name: "Installation 6276",
+    description: "Acoustic panel installation.",
+    image: "/INSTALLS/IMG_6276.JPG",
+  },
+];
 
 export function WallSystemsShowcase() {
-  const [selectedColor, setSelectedColor] = useState(0)
+  const [selectedImage, setSelectedImage] = useState(0)
   const [isVulcanGalleryOpen, setIsVulcanGalleryOpen] = useState(false)
   const [isMiniMattGalleryOpen, setIsMiniMattGalleryOpen] = useState(false)
 
-  const nextColor = () => {
-    setSelectedColor(prev => (prev + 1) % colorOptions.length)
+  const nextImage = () => {
+    setSelectedImage(prev => (prev + 1) % installationImagesData.length)
   }
 
-  const prevColor = () => {
-    setSelectedColor(prev => (prev - 1 + colorOptions.length) % colorOptions.length)
+  const prevImage = () => {
+    setSelectedImage(prev => (prev - 1 + installationImagesData.length) % installationImagesData.length)
   }
 
   return (
@@ -155,59 +162,27 @@ export function WallSystemsShowcase() {
                   <div
                     className="w-full h-full relative transition-all duration-700 ease-out"
                     style={{
-                      backgroundImage: `url(${colorOptions[selectedColor].image})`,
+                      backgroundImage: `url(${installationImagesData[selectedImage].image})`,
                       backgroundSize: "cover",
                       backgroundPosition: "center",
                     }}
                   >
-                    {/* Color overlay to show selected color */}
-                    <div
-                      className="absolute inset-0 mix-blend-multiply opacity-40 transition-all duration-700"
-                      style={{ backgroundColor: colorOptions[selectedColor].color }}
-                    />
-
                     {/* Navigation arrows */}
                     <button
-                      onClick={prevColor}
+                      onClick={prevImage}
                       className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-background/90 backdrop-blur-sm rounded-lg flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-background border border-border"
                     >
                       <ChevronLeft className="h-5 w-5 text-foreground" />
                     </button>
 
                     <button
-                      onClick={nextColor}
+                      onClick={nextImage}
                       className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-background/90 backdrop-blur-sm rounded-lg flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-background border border-border"
                     >
                       <ChevronRight className="h-5 w-5 text-foreground" />
                     </button>
                   </div>
                 </div>
-              </div>
-
-              <div className="flex gap-3 overflow-x-auto pb-2">
-                {colorOptions.map((color, index) => (
-                  <button
-                    key={color.name}
-                    onClick={() => setSelectedColor(index)}
-                    className={`flex-shrink-0 w-20 h-16 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
-                      index === selectedColor ? "border-primary shadow-lg" : "border-border hover:border-muted-foreground"
-                    }`}
-                  >
-                    <div
-                      className="w-full h-full relative"
-                      style={{
-                        backgroundImage: `url(${color.image})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                      }}
-                    >
-                      <div
-                        className="absolute inset-0 mix-blend-multiply opacity-50"
-                        style={{ backgroundColor: color.color }}
-                      />
-                    </div>
-                  </button>
-                ))}
               </div>
             </div>
 
@@ -229,18 +204,9 @@ export function WallSystemsShowcase() {
 
               <div className="space-y-4">
                 <h3 className="text-xl font-medium text-foreground heading-secondary">
-                  Current Selection: {colorOptions[selectedColor].name}
+                  Current Selection: {installationImagesData[selectedImage].name}
                 </h3>
-                <p className="text-muted-foreground">{colorOptions[selectedColor].description}</p>
-
-                {/* Color swatch */}
-                <div className="flex items-center gap-4">
-                  <div
-                    className="w-16 h-16 rounded-lg border border-border shadow-sm"
-                    style={{ backgroundColor: colorOptions[selectedColor].color }}
-                  />
-                  <div className="text-sm text-muted-foreground">Color: {colorOptions[selectedColor].name}</div>
-                </div>
+                <p className="text-muted-foreground">{installationImagesData[selectedImage].description}</p>
               </div>
 
               <div className="space-y-4">

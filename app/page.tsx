@@ -352,7 +352,7 @@ export default function HomePage() {
                 <div className="space-y-6">
                   {[
                     { icon: Phone, text: "076 574 2053", delay: 1 },
-                    { icon: Mail, text: "gainacousticsolutions@gmail.com", delay: 2 },
+                    { icon: Mail, text: "info@gainacousticssolutions.com", delay: 2 },
                   ].map((contact, index) => {
                     const IconComponent = contact.icon
                     return (

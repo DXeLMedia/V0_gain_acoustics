@@ -11,6 +11,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog"
 import CircularGallery from "@/components/ui/CircularGallery"
 import { ScrollToTop } from "@/components/ui/scroll-to-top"
 import { Reviews } from "@/components/reviews"
+import ContactForm from "@/components/ui/contact-form"
 
 export default function HomePage() {
   const [videoModalOpen, setVideoModalOpen] = useState(false)
@@ -369,14 +370,7 @@ export default function HomePage() {
               </div>
 
               <div className="p-8 rounded-2xl cascade-animate opacity-0 translate-y-[30px] stagger-2">
-                <h3 className="text-2xl font-bold text-foreground mb-6">Lets Connect!</h3>
-                <iframe
-                  aria-label="Let's Connect"
-                  frameBorder="0"
-                  allow="camera;"
-                  style={{ height: "500px", width: "99%", border: "none" }}
-                  src="https://forms.zohopublic.com/dxelmediagm1/form/ContactUs/formperma/UsUj4NJVoS6TglQhRRbg-yGCmns6e5iVzLy3Z5IuLEE?zf_enablecamera=true"
-                ></iframe>
+                <ContactForm />
               </div>
             </div>
           </div>

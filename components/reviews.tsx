@@ -30,7 +30,7 @@ export const Reviews: React.FC = () => {
         </div>
 
         {/* Elfsight Google Reviews Embed */}
-        <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
+        <Script src="https://elfsightcdn.com/platform.js" strategy="afterInteractive" />
         <div className="elfsight-app-a0da7ef4-9a6b-4002-abcf-5ba07a7148e0" data-elfsight-app-lazy></div>
 
         <div className="py-24">

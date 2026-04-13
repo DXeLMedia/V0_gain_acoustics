@@ -272,7 +272,7 @@ export default function HomePage() {
                 {
                   title: "Manufacturing Excellence",
                   description:
-                    "Our state-of-the-art manufacturing facility produces high-quality acoustic panels using advanced printing technology and premium materials. Each panel is crafted to meet exact specifications for both acoustic performance and visual appeal.\n\n⦁\tLarge format printing capabilities\n⦁\tCustom sizing and shapes\n⦁\tPremium acoustic materials",
+                    "From our workspace to your walls: we use premium materials and high-def printing to create boutique acoustic art that doesn't compromise on quality. Each panel is crafted to meet exact specifications for both acoustic performance and visual appeal.\n\n⦁\tLarge format printing capabilities\n⦁\tCustom sizing and shapes\n⦁\tPremium acoustic materials",
                   features: [],
                   delay: 1,
                 },

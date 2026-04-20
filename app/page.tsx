@@ -15,6 +15,7 @@ import { Reviews } from "@/components/reviews"
 export default function HomePage() {
   const [videoModalOpen, setVideoModalOpen] = useState(false)
   const [picturesModalOpen, setPicturesModalOpen] = useState(false)
+  const [isVulcanGalleryOpen, setIsVulcanGalleryOpen] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
   const [scrollY, setScrollY] = useState(0)
   const observerRef = useRef<IntersectionObserver | null>(null)
@@ -235,11 +236,12 @@ export default function HomePage() {
                     beautifully as they look. Superior acoustic performance. Custom visual designs.
                   </p>
                 </div>
-                <a href="#vulcan-range">
-                  <Button className="btn-secondary magnetic-hover shimmer-effect fluid-animate opacity-0 translate-y-[20px] stagger-4 transition-all duration-400">
-                    View Vulcan Range
-                  </Button>
-                </a>
+                <Button
+                  onClick={() => setIsVulcanGalleryOpen(true)}
+                  className="btn-secondary magnetic-hover shimmer-effect fluid-animate opacity-0 translate-y-[20px] stagger-4 transition-all duration-400"
+                >
+                  View Vulcan Range
+                </Button>
               </div>
               <div className="relative cascade-animate opacity-0 translate-x-[60px]">
                 <div className="professional-card p-4 rounded-2xl magnetic-hover transition-all duration-500">
@@ -257,7 +259,10 @@ export default function HomePage() {
         
 
         <div className="fluid-animate opacity-0 translate-y-[50px]">
-          <WallSystemsShowcase />
+          <WallSystemsShowcase
+            externalIsVulcanGalleryOpen={isVulcanGalleryOpen}
+            setExternalIsVulcanGalleryOpen={setIsVulcanGalleryOpen}
+          />
         </div>
 
         <section id="services" className="py-24 bg-muted/30 fluid-animate opacity-0 translate-y-[50px]">

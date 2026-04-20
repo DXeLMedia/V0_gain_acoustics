@@ -311,9 +311,18 @@ const installationImagesData = [
   },
 ];
 
-export function WallSystemsShowcase() {
+export function WallSystemsShowcase({
+  externalIsVulcanGalleryOpen,
+  setExternalIsVulcanGalleryOpen,
+}: {
+  externalIsVulcanGalleryOpen?: boolean
+  setExternalIsVulcanGalleryOpen?: (isOpen: boolean) => void
+} = {}) {
   const [selectedImage, setSelectedImage] = useState(0)
-  const [isVulcanGalleryOpen, setIsVulcanGalleryOpen] = useState(false)
+  const [internalIsVulcanGalleryOpen, setInternalIsVulcanGalleryOpen] = useState(false)
+
+  const isVulcanGalleryOpen = externalIsVulcanGalleryOpen !== undefined ? externalIsVulcanGalleryOpen : internalIsVulcanGalleryOpen
+  const setIsVulcanGalleryOpen = setExternalIsVulcanGalleryOpen || setInternalIsVulcanGalleryOpen
   const [isMiniMattGalleryOpen, setIsMiniMattGalleryOpen] = useState(false)
   const [isFoamRangeGalleryOpen, setIsFoamRangeGalleryOpen] = useState(false)
   const [isSlatWallGalleryOpen, setIsSlatWallGalleryOpen] = useState(false)

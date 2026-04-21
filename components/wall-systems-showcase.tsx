@@ -124,7 +124,7 @@ const foamRangeImages = foamRangeImagesRaw.map(image => ({
 
 const cloudInstallsImages = cloudInstallsImagesRaw.map(image => ({
   image,
-  text: image.split("/").pop()?.split(".")[0] || "",
+  text: " ",
 }))
 
 const slatWallImages = slatWallImagesRaw.map(image => ({
@@ -346,6 +346,7 @@ export function WallSystemsShowcase({
   const [isFoamRangeGalleryOpen, setIsFoamRangeGalleryOpen] = useState(false)
   const [isSlatWallGalleryOpen, setIsSlatWallGalleryOpen] = useState(false)
   const [isCloudInstallsGalleryOpen, setIsCloudInstallsGalleryOpen] = useState(false)
+  const [isCloudInstallsTileModalOpen, setIsCloudInstallsTileModalOpen] = useState(false)
 
   const nextImage = () => {
     setSelectedImage(prev => (prev + 1) % installationImagesData.length)
@@ -419,7 +420,7 @@ export function WallSystemsShowcase({
               <div className="space-y-4">
                 <Button
                   className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 text-base font-medium btn-primary"
-                  onClick={() => setIsCloudInstallsGalleryOpen(true)}
+                  onClick={() => setIsCloudInstallsTileModalOpen(true)}
                 >
                   Installs Gallery
                 </Button>
@@ -581,7 +582,27 @@ export function WallSystemsShowcase({
             textColor="#ffffff"
             font="bold 30px Poppins"
             objectFit="contain"
+            itemScale={1.8}
           />
+        </DialogContent>
+      </Dialog>
+      <Dialog open={isCloudInstallsTileModalOpen} onOpenChange={setIsCloudInstallsTileModalOpen}>
+        <DialogContent className="max-w-md bg-transparent border-none p-0 shadow-none flex justify-center items-center">
+          <div
+            className="cursor-pointer w-72 h-72 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-300 relative overflow-hidden flex items-end justify-center pb-4"
+            style={{
+              backgroundImage: `url('/CLOUD PANELS/IMG_0036.JPG')`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            onClick={() => {
+              setIsCloudInstallsTileModalOpen(false)
+              setIsCloudInstallsGalleryOpen(true)
+            }}
+          >
+            <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition-colors" />
+            <span className="relative z-10 text-white font-semibold text-xl tracking-wider drop-shadow-md">Cloud Installs</span>
+          </div>
         </DialogContent>
       </Dialog>
     </>

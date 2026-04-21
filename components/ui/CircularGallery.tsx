@@ -155,6 +155,7 @@ interface MediaProps {
   borderRadius?: number;
   font?: string;
   objectFit?: 'cover' | 'contain';
+  itemScale?: number;
 }
 
 class Media {
@@ -174,6 +175,7 @@ class Media {
   borderRadius: number;
   font?: string;
   objectFit: 'cover' | 'contain';
+  itemScale: number;
   program!: Program;
   plane!: Mesh;
   title!: Title;
@@ -201,7 +203,8 @@ class Media {
     textColor,
     borderRadius = 0,
     font,
-    objectFit = 'cover'
+    objectFit = 'cover',
+    itemScale = 1
   }: MediaProps) {
     this.geometry = geometry;
     this.gl = gl;
@@ -218,6 +221,7 @@ class Media {
     this.borderRadius = borderRadius;
     this.font = font;
     this.objectFit = objectFit;
+    this.itemScale = itemScale;
     this.createShader();
     this.createMesh();
     this.createTitle();
@@ -383,8 +387,8 @@ class Media {
       }
     }
     this.scale = this.screen.height / 1500;
-    this.plane.scale.y = (this.viewport.height * (900 * this.scale)) / this.screen.height;
-    this.plane.scale.x = (this.viewport.width * (700 * this.scale)) / this.screen.width;
+    this.plane.scale.y = ((this.viewport.height * (900 * this.scale)) / this.screen.height) * this.itemScale;
+    this.plane.scale.x = ((this.viewport.width * (700 * this.scale)) / this.screen.width) * this.itemScale;
     this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
     this.padding = 2;
     this.width = this.plane.scale.x + this.padding;
@@ -400,6 +404,7 @@ interface AppConfig {
   borderRadius?: number;
   font?: string;
   objectFit?: 'cover' | 'contain';
+  itemScale?: number;
   scrollSpeed?: number;
   scrollEase?: number;
 }
@@ -445,6 +450,7 @@ class App {
       borderRadius = 0,
       font = 'bold 30px Figtree',
       objectFit = 'cover',
+      itemScale = 1,
       scrollSpeed = 2,
       scrollEase = 0.05
     }: AppConfig
@@ -459,7 +465,7 @@ class App {
     this.createScene();
     this.onResize();
     this.createGeometry();
-    this.createMedias(items, bend, textColor, borderRadius, font, objectFit);
+    this.createMedias(items, bend, textColor, borderRadius, font, objectFit, itemScale);
     this.update();
     this.addEventListeners();
   }
@@ -498,7 +504,8 @@ class App {
     textColor: string,
     borderRadius: number,
     font: string,
-    objectFit: 'cover' | 'contain'
+    objectFit: 'cover' | 'contain',
+    itemScale: number
   ) {
     const defaultItems = [
       {
@@ -540,7 +547,8 @@ class App {
         textColor,
         borderRadius,
         font,
-        objectFit
+        objectFit,
+        itemScale
       });
     });
   }
@@ -657,6 +665,7 @@ interface CircularGalleryProps {
   borderRadius?: number;
   font?: string;
   objectFit?: 'cover' | 'contain';
+  itemScale?: number;
   scrollSpeed?: number;
   scrollEase?: number;
 }
@@ -668,6 +677,7 @@ export default function CircularGallery({
   borderRadius = 0.05,
   font = 'bold 30px Figtree',
   objectFit = 'cover',
+  itemScale = 1,
   scrollSpeed = 2,
   scrollEase = 0.05
 }: CircularGalleryProps) {
@@ -681,12 +691,13 @@ export default function CircularGallery({
       borderRadius,
       font,
       objectFit,
+      itemScale,
       scrollSpeed,
       scrollEase
     });
     return () => {
       app.destroy();
     };
-  }, [items, bend, textColor, borderRadius, font, objectFit, scrollSpeed, scrollEase]);
+  }, [items, bend, textColor, borderRadius, font, objectFit, itemScale, scrollSpeed, scrollEase]);
   return <div className="circular-gallery" ref={containerRef} />;
 }

@@ -80,6 +80,19 @@ const foamRangeImagesRaw = [
   "/FOAMRITE/TYPES/StudioPro-Bass-Trap-Black.png",
 ]
 
+
+const cloudInstallsImagesRaw = [
+  "/CLOUD PANELS/4e02c6b3-6cbd-4dc1-8671-b57fe76e7af1.JPG",
+  "/CLOUD PANELS/6250b207-1b15-4750-8c60-c7a5eb036ed6.JPG",
+  "/CLOUD PANELS/68ce1c4b-f268-4858-9e3e-ca9f6b8d09f3.JPG",
+  "/CLOUD PANELS/IMG_0019.JPG",
+  "/CLOUD PANELS/IMG_0026.JPG",
+  "/CLOUD PANELS/IMG_0036.JPG",
+  "/CLOUD PANELS/IMG_0578.JPG",
+  "/CLOUD PANELS/IMG_0579.JPG",
+  "/CLOUD PANELS/de7db838-5c5e-4c5a-bfaf-2aeae8c72f2c.JPG",
+]
+
 const slatWallImagesRaw = [
   "/SLATWALL/Black Ash.JPG",
   "/SLATWALL/Classic Oak (Black Felt).JPG",
@@ -106,6 +119,12 @@ const miniMattImages = miniMattImagesRaw.map(image => ({
 const foamRangeImages = foamRangeImagesRaw.map(image => ({
   image,
   text: image.split("/").pop()?.split(".")[0] || "",
+}))
+
+
+const cloudInstallsImages = cloudInstallsImagesRaw.map(image => ({
+  image,
+  text: " ",
 }))
 
 const slatWallImages = slatWallImagesRaw.map(image => ({
@@ -326,6 +345,8 @@ export function WallSystemsShowcase({
   const [isMiniMattGalleryOpen, setIsMiniMattGalleryOpen] = useState(false)
   const [isFoamRangeGalleryOpen, setIsFoamRangeGalleryOpen] = useState(false)
   const [isSlatWallGalleryOpen, setIsSlatWallGalleryOpen] = useState(false)
+  const [isCloudInstallsGalleryOpen, setIsCloudInstallsGalleryOpen] = useState(false)
+  const [isCloudInstallsTileModalOpen, setIsCloudInstallsTileModalOpen] = useState(false)
 
   const nextImage = () => {
     setSelectedImage(prev => (prev + 1) % installationImagesData.length)
@@ -397,11 +418,12 @@ export function WallSystemsShowcase({
               </div>
 
               <div className="space-y-4">
-                <a href="#fabric-felt-tile">
-                  <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 text-base font-medium btn-primary">
-                    Acoustic Wall Systems Samples
-                  </Button>
-                </a>
+                <Button
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 text-base font-medium btn-primary"
+                  onClick={() => setIsCloudInstallsTileModalOpen(true)}
+                >
+                  Installs Gallery
+                </Button>
               </div>
 
               <div className="space-y-4 border-t border-border pt-8">
@@ -550,6 +572,37 @@ export function WallSystemsShowcase({
             textColor="#ffffff"
             font="bold 30px Poppins"
           />
+        </DialogContent>
+      </Dialog>
+      <Dialog open={isCloudInstallsGalleryOpen} onOpenChange={setIsCloudInstallsGalleryOpen}>
+        <DialogContent className="max-w-6xl h-[80vh] bg-transparent border-none p-0">
+          <CircularGallery
+            items={cloudInstallsImages}
+            bend={0}
+            textColor="#ffffff"
+            font="bold 30px Poppins"
+            objectFit="contain"
+            itemScale={1.8}
+          />
+        </DialogContent>
+      </Dialog>
+      <Dialog open={isCloudInstallsTileModalOpen} onOpenChange={setIsCloudInstallsTileModalOpen}>
+        <DialogContent className="max-w-md bg-transparent border-none p-0 shadow-none flex justify-center items-center">
+          <div
+            className="cursor-pointer w-72 h-72 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-300 relative overflow-hidden flex items-end justify-center pb-4"
+            style={{
+              backgroundImage: `url('/CLOUD PANELS/IMG_0036.JPG')`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            onClick={() => {
+              setIsCloudInstallsTileModalOpen(false)
+              setIsCloudInstallsGalleryOpen(true)
+            }}
+          >
+            <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition-colors" />
+            <span className="relative z-10 text-white font-semibold text-xl tracking-wider drop-shadow-md">Cloud Installs</span>
+          </div>
         </DialogContent>
       </Dialog>
     </>

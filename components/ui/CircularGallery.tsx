@@ -154,6 +154,7 @@ interface MediaProps {
   textColor: string;
   borderRadius?: number;
   font?: string;
+  objectFit?: 'cover' | 'contain';
 }
 
 class Media {
@@ -172,6 +173,7 @@ class Media {
   textColor: string;
   borderRadius: number;
   font?: string;
+  objectFit: 'cover' | 'contain';
   program!: Program;
   plane!: Mesh;
   title!: Title;
@@ -198,7 +200,8 @@ class Media {
     bend,
     textColor,
     borderRadius = 0,
-    font
+    font,
+    objectFit = 'cover'
   }: MediaProps) {
     this.geometry = geometry;
     this.gl = gl;
@@ -214,6 +217,7 @@ class Media {
     this.textColor = textColor;
     this.borderRadius = borderRadius;
     this.font = font;
+    this.objectFit = objectFit;
     this.createShader();
     this.createMesh();
     this.createTitle();
@@ -256,15 +260,28 @@ class Media {
           return length(max(d, vec2(0.0))) + min(max(d.x, d.y), 0.0) - r;
         }
 
+        uniform float uObjectFit; // 0.0 for cover, 1.0 for contain
+
         void main() {
-          vec2 ratio = vec2(
+          vec2 ratioCover = vec2(
             min((uPlaneSizes.x / uPlaneSizes.y) / (uImageSizes.x / uImageSizes.y), 1.0),
             min((uPlaneSizes.y / uPlaneSizes.x) / (uImageSizes.y / uImageSizes.x), 1.0)
           );
+          vec2 ratioContain = vec2(
+            max((uPlaneSizes.x / uPlaneSizes.y) / (uImageSizes.x / uImageSizes.y), 1.0),
+            max((uPlaneSizes.y / uPlaneSizes.x) / (uImageSizes.y / uImageSizes.x), 1.0)
+          );
+          vec2 ratio = mix(ratioCover, ratioContain, uObjectFit);
+
           vec2 uv = vec2(
             vUv.x * ratio.x + (1.0 - ratio.x) * 0.5,
             vUv.y * ratio.y + (1.0 - ratio.y) * 0.5
           );
+
+          // Discard pixels outside the image bounds when containing
+          if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) {
+            discard;
+          }
           vec4 color = texture2D(tMap, uv);
 
           float d = roundedBoxSDF(vUv - 0.5, vec2(0.5 - uBorderRadius), uBorderRadius);
@@ -282,7 +299,8 @@ class Media {
         uImageSizes: { value: [0, 0] },
         uSpeed: { value: 0 },
         uTime: { value: 100 * Math.random() },
-        uBorderRadius: { value: this.borderRadius }
+        uBorderRadius: { value: this.borderRadius },
+        uObjectFit: { value: this.objectFit === 'contain' ? 1.0 : 0.0 }
       },
       transparent: true
     });
@@ -381,6 +399,7 @@ interface AppConfig {
   textColor?: string;
   borderRadius?: number;
   font?: string;
+  objectFit?: 'cover' | 'contain';
   scrollSpeed?: number;
   scrollEase?: number;
 }
@@ -425,6 +444,7 @@ class App {
       textColor = '#ffffff',
       borderRadius = 0,
       font = 'bold 30px Figtree',
+      objectFit = 'cover',
       scrollSpeed = 2,
       scrollEase = 0.05
     }: AppConfig
@@ -439,7 +459,7 @@ class App {
     this.createScene();
     this.onResize();
     this.createGeometry();
-    this.createMedias(items, bend, textColor, borderRadius, font);
+    this.createMedias(items, bend, textColor, borderRadius, font, objectFit);
     this.update();
     this.addEventListeners();
   }
@@ -477,7 +497,8 @@ class App {
     bend: number = 0,
     textColor: string,
     borderRadius: number,
-    font: string
+    font: string,
+    objectFit: 'cover' | 'contain'
   ) {
     const defaultItems = [
       {
@@ -518,7 +539,8 @@ class App {
         bend,
         textColor,
         borderRadius,
-        font
+        font,
+        objectFit
       });
     });
   }
@@ -634,6 +656,7 @@ interface CircularGalleryProps {
   textColor?: string;
   borderRadius?: number;
   font?: string;
+  objectFit?: 'cover' | 'contain';
   scrollSpeed?: number;
   scrollEase?: number;
 }
@@ -644,6 +667,7 @@ export default function CircularGallery({
   textColor = '#ffffff',
   borderRadius = 0.05,
   font = 'bold 30px Figtree',
+  objectFit = 'cover',
   scrollSpeed = 2,
   scrollEase = 0.05
 }: CircularGalleryProps) {
@@ -656,12 +680,13 @@ export default function CircularGallery({
       textColor,
       borderRadius,
       font,
+      objectFit,
       scrollSpeed,
       scrollEase
     });
     return () => {
       app.destroy();
     };
-  }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
+  }, [items, bend, textColor, borderRadius, font, objectFit, scrollSpeed, scrollEase]);
   return <div className="circular-gallery" ref={containerRef} />;
 }

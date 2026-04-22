@@ -370,6 +370,21 @@ export default function HomePage() {
                       </div>
                     )
                   })}
+                  <div className="pl-[4rem] pr-6 py-4 text-xs font-medium whitespace-pre-wrap fluid-animate opacity-0 translate-y-[30px] stagger-3">
+                    FINE PRINT:{"\n\n"}
+                    Assessments done via email, phone or WhatsApp are not charged charge, however all information and measurements must be supplied by the customer. Please send us an email or get in touch with us via WhatsApp{"\n\n"}
+                    if you require a Specialist or Contractor to come out and assess the room, please fill out the Assessment form below.{"\n\n"}
+                    OUR FEE STRUCTURE{"\n"}
+                    Assessment Fee: within a 10km radius or less in R500{"\n"}
+                    Anything further is R 950 and only confirmed once the invoice is paid{"\n"}
+                    Scheduled at the next available time slot.{"\n\n"}
+                    Includes:{"\n"}
+                    Conducted Assessment via a Site Visit{"\n"}
+                    Basic Measurements & Information captured{"\n"}
+                    Presenting a solution and options available{"\n"}
+                    Estimated Cost projections (after site visit){"\n"}
+                    Official Quote
+                  </div>
                 </div>
               </div>
 

@@ -82,31 +82,22 @@ const foamRangeImagesRaw = [
 
 
 const cloudInstallsImagesRaw = [
-  "/CLOUD PANELS/4e02c6b3-6cbd-4dc1-8671-b57fe76e7af1.JPG",
-  "/CLOUD PANELS/6250b207-1b15-4750-8c60-c7a5eb036ed6.JPG",
-  "/CLOUD PANELS/68ce1c4b-f268-4858-9e3e-ca9f6b8d09f3.JPG",
-  "/CLOUD PANELS/IMG_0019.JPG",
-  "/CLOUD PANELS/IMG_0026.JPG",
-  "/CLOUD PANELS/IMG_0036.JPG",
-  "/CLOUD PANELS/IMG_0305.JPG",
   "/CLOUD PANELS/IMG_0578.JPG",
-  "/CLOUD PANELS/IMG_0579.JPG",
-  "/CLOUD PANELS/IMG_3793.JPG",
-  "/CLOUD PANELS/IMG_3910.JPG",
-  "/CLOUD PANELS/IMG_4050.JPG",
-  "/CLOUD PANELS/IMG_6289.JPG",
-  "/CLOUD PANELS/IMG_6290.JPG",
-  "/CLOUD PANELS/IMG_6368.JPG",
-  "/CLOUD PANELS/IMG_6504.JPG",
-  "/CLOUD PANELS/IMG_6510.JPG",
-  "/CLOUD PANELS/IMG_6511.JPG",
+  "/CLOUD PANELS/IMG_3793.jpg",
+  "/CLOUD PANELS/IMG_3910.jpg",
+  "/CLOUD PANELS/IMG_4050.jpg",
+  "/CLOUD PANELS/IMG_6289.jpg",
+  "/CLOUD PANELS/IMG_6290.jpg",
+  "/CLOUD PANELS/IMG_6368.jpg",
+  "/CLOUD PANELS/IMG_6504.jpg",
+  "/CLOUD PANELS/IMG_6510.jpg",
+  "/CLOUD PANELS/IMG_6511.jpg",
   "/CLOUD PANELS/IMG_6512.jpg",
   "/CLOUD PANELS/IMG_7707.jpg",
   "/CLOUD PANELS/IMG_7710.jpg",
   "/CLOUD PANELS/IMG_9264.jpg",
   "/CLOUD PANELS/IMG_9270.jpg",
-  "/CLOUD PANELS/IMG_9271.JPG",
-  "/CLOUD PANELS/de7db838-5c5e-4c5a-bfaf-2aeae8c72f2c.JPG",
+  "/CLOUD PANELS/IMG_9271.jpg",
 ]
 
 const slatWallImagesRaw = [
@@ -607,7 +598,7 @@ export function WallSystemsShowcase({
           <div
             className="cursor-pointer w-72 h-72 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-300 relative overflow-hidden flex items-end justify-center pb-4"
             style={{
-              backgroundImage: `url('/CLOUD PANELS/IMG_0036.JPG')`,
+              backgroundImage: `url('/CLOUD PANELS/IMG_0019.JPG')`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}

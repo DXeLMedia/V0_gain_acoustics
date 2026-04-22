@@ -82,14 +82,7 @@ const foamRangeImagesRaw = [
 
 
 const cloudInstallsImagesRaw = [
-  "/CLOUD PANELS/4e02c6b3-6cbd-4dc1-8671-b57fe76e7af1.JPG",
-  "/CLOUD PANELS/6250b207-1b15-4750-8c60-c7a5eb036ed6.JPG",
-  "/CLOUD PANELS/68ce1c4b-f268-4858-9e3e-ca9f6b8d09f3.JPG",
-  "/CLOUD PANELS/IMG_0019.JPG",
-  "/CLOUD PANELS/IMG_0026.JPG",
-  "/CLOUD PANELS/IMG_0036.JPG",
   "/CLOUD PANELS/IMG_0578.JPG",
-  "/CLOUD PANELS/IMG_0579.JPG",
   "/CLOUD PANELS/IMG_3793.jpg",
   "/CLOUD PANELS/IMG_3910.jpg",
   "/CLOUD PANELS/IMG_4050.jpg",
@@ -105,7 +98,6 @@ const cloudInstallsImagesRaw = [
   "/CLOUD PANELS/IMG_9264.jpg",
   "/CLOUD PANELS/IMG_9270.jpg",
   "/CLOUD PANELS/IMG_9271.jpg",
-  "/CLOUD PANELS/de7db838-5c5e-4c5a-bfaf-2aeae8c72f2c.JPG",
 ]
 
 const slatWallImagesRaw = [

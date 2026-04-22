@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import CircularGallery from "@/components/ui/CircularGallery"
 import { GalleryModal } from "@/components/ui/gallery-modal"
+import { VideoCarouselModal } from "@/components/ui/video-carousel-modal"
+
 
 const vulcanImagesRaw = [
   "/VULCAN/Airforce 51.png",
@@ -80,6 +82,20 @@ const foamRangeImagesRaw = [
   "/FOAMRITE/TYPES/StudioPro-Bass-Trap-Black.png",
 ]
 
+
+
+const installShortsVideos = [
+  {
+    id: "casa-bella",
+    iframeSrc: "https://drive.google.com/file/d/1g3GGUUCo1vEauNA9KWzC7yJEffdh8AZy/preview",
+    title: "Casa Bella",
+  },
+  {
+    id: "home-studio",
+    iframeSrc: "https://drive.google.com/file/d/1wAfxKfQnq2IIVBbu5zRkLFkBOqHlaHOJ/preview",
+    title: "Home Studio",
+  },
+]
 
 const cloudInstallsImagesRaw = [
   "/CLOUD PANELS/IMG_6467.jpg",
@@ -364,6 +380,8 @@ export function WallSystemsShowcase({
   const [isSlatWallGalleryOpen, setIsSlatWallGalleryOpen] = useState(false)
   const [isCloudInstallsGalleryOpen, setIsCloudInstallsGalleryOpen] = useState(false)
   const [isCloudInstallsTileModalOpen, setIsCloudInstallsTileModalOpen] = useState(false)
+  const [isInstallShortsGalleryOpen, setIsInstallShortsGalleryOpen] = useState(false)
+
 
   const nextImage = () => {
     setSelectedImage(prev => (prev + 1) % installationImagesData.length)
@@ -604,9 +622,9 @@ export function WallSystemsShowcase({
         </DialogContent>
       </Dialog>
       <Dialog open={isCloudInstallsTileModalOpen} onOpenChange={setIsCloudInstallsTileModalOpen}>
-        <DialogContent className="max-w-md bg-transparent border-none p-0 shadow-none flex justify-center items-center">
+        <DialogContent className="max-w-3xl bg-transparent border-none p-0 shadow-none flex flex-col sm:flex-row gap-8 justify-center items-center">
           <div
-            className="cursor-pointer w-72 h-72 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-300 relative overflow-hidden flex items-end justify-center pb-4"
+            className="cursor-pointer w-72 h-72 sm:w-80 sm:h-80 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-300 relative overflow-hidden flex items-end justify-center pb-4"
             style={{
               backgroundImage: `url('/CLOUD PANELS/IMG_0019.JPG')`,
               backgroundSize: "cover",
@@ -619,9 +637,29 @@ export function WallSystemsShowcase({
           >
             <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition-colors" />
             <span className="relative z-10 text-white font-semibold text-xl tracking-wider drop-shadow-md">Cloud Installs</span>
+                    </div>
+          <div
+            className="cursor-pointer w-72 h-72 sm:w-80 sm:h-80 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-300 relative overflow-hidden flex items-end justify-center pb-4"
+            style={{
+              backgroundImage: `url('/CasaBellaInstall-Thumbnail.jpg')`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            onClick={() => {
+              setIsCloudInstallsTileModalOpen(false)
+              setIsInstallShortsGalleryOpen(true)
+            }}
+          >
+            <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition-colors" />
+            <span className="relative z-10 text-white font-semibold text-xl tracking-wider drop-shadow-md">Install Shorts</span>
           </div>
         </DialogContent>
       </Dialog>
+      <VideoCarouselModal
+        isOpen={isInstallShortsGalleryOpen}
+        onClose={() => setIsInstallShortsGalleryOpen(false)}
+        videos={installShortsVideos}
+      />
     </>
   )
 }

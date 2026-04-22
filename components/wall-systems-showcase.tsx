@@ -598,7 +598,7 @@ export function WallSystemsShowcase({
           <div
             className="cursor-pointer w-72 h-72 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-300 relative overflow-hidden flex items-end justify-center pb-4"
             style={{
-              backgroundImage: `url('/CLOUD PANELS/IMG_0036.JPG')`,
+              backgroundImage: `url('/CLOUD PANELS/IMG_0019.JPG')`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}

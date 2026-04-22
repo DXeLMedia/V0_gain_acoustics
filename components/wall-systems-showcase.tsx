@@ -82,6 +82,9 @@ const foamRangeImagesRaw = [
 
 
 const cloudInstallsImagesRaw = [
+  "/CLOUD PANELS/IMG_6467.jpg",
+  "/CLOUD PANELS/IMG_6473.jpg",
+  "/CLOUD PANELS/IMG_6476.jpg",
   "/CLOUD PANELS/4e02c6b3-6cbd-4dc1-8671-b57fe76e7af1.JPG",
   "/CLOUD PANELS/6250b207-1b15-4750-8c60-c7a5eb036ed6.JPG",
   "/CLOUD PANELS/68ce1c4b-f268-4858-9e3e-ca9f6b8d09f3.JPG",

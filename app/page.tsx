@@ -126,16 +126,15 @@ export default function HomePage() {
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-400 group-hover:translate-x-2" />
                 </Button>
               </a>
-              <a href="#demo">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="btn-secondary text-lg px-10 py-4 magnetic-hover bg-transparent fluid-animate opacity-0 translate-y-[20px] stagger-6 transition-all duration-400 group"
-                >
-                  <Play className="mr-2 h-5 w-5 transition-transform duration-400 group-hover:scale-125" />
-                  Watch Demo
-                </Button>
-              </a>
+              <Button
+                onClick={() => setVideoModalOpen(true)}
+                size="lg"
+                variant="outline"
+                className="btn-secondary text-lg px-10 py-4 magnetic-hover bg-transparent fluid-animate opacity-0 translate-y-[20px] stagger-6 transition-all duration-400 group"
+              >
+                <Play className="mr-2 h-5 w-5 transition-transform duration-400 group-hover:scale-125" />
+                Watch Demo
+              </Button>
             </div>
           </div>
 

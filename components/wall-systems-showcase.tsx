@@ -158,6 +158,35 @@ const cloudInstallsImages = cloudInstallsImagesRaw.map(image => ({
   text: " ",
 }))
 
+const wallInstallsImagesRaw = [
+  "/INSTALLS/IMG_6276.JPG",
+  "/INSTALLS/IMG_6275.JPG",
+  "/INSTALLS/IMG_6274.JPG",
+  "/INSTALLS/IMG_5994.JPG",
+  "/INSTALLS/IMG_5876.JPG",
+]
+
+const wallInstallsImages = wallInstallsImagesRaw.map(image => ({
+  image: image,
+  text: ""
+}))
+
+const slatedInstallsImagesRaw = [
+  "/INSTALLS/IMG_5498.JPG",
+  "/INSTALLS/IMG_5529.JPG",
+  "/INSTALLS/IMG_5530.JPG",
+  "/INSTALLS/IMG_5533.JPG",
+  "/INSTALLS/IMG_5534.JPG",
+  "/INSTALLS/IMG_5545.JPG",
+  "/INSTALLS/IMG_5561.JPG",
+  "/INSTALLS/IMG_5563.JPG",
+]
+
+const slatedInstallsImages = slatedInstallsImagesRaw.map(image => ({
+  image: image,
+  text: ""
+}))
+
 const slatWallImages = slatWallImagesRaw.map(image => ({
   image,
   text: image.split("/").pop()?.split(".")[0] || "",
@@ -329,6 +358,8 @@ export function WallSystemsShowcase({
   const [isCloudInstallsGalleryOpen, setIsCloudInstallsGalleryOpen] = useState(false)
   const [isCloudInstallsTileModalOpen, setIsCloudInstallsTileModalOpen] = useState(false)
   const [isInstallShortsGalleryOpen, setIsInstallShortsGalleryOpen] = useState(false)
+  const [isWallInstallsGalleryOpen, setIsWallInstallsGalleryOpen] = useState(false)
+  const [isSlatedInstallsGalleryOpen, setIsSlatedInstallsGalleryOpen] = useState(false)
 
 
   const nextImage = () => {
@@ -570,7 +601,7 @@ export function WallSystemsShowcase({
         </DialogContent>
       </Dialog>
       <Dialog open={isCloudInstallsTileModalOpen} onOpenChange={setIsCloudInstallsTileModalOpen}>
-        <DialogContent className="max-w-3xl bg-transparent border-none p-0 shadow-none flex flex-col sm:flex-row gap-8 justify-center items-center">
+        <DialogContent className="max-w-4xl bg-transparent border-none p-0 shadow-none grid grid-cols-1 sm:grid-cols-2 gap-8 justify-items-center items-center">
           <div
             className="cursor-pointer w-72 h-72 sm:w-80 sm:h-80 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-300 relative overflow-hidden flex items-end justify-center pb-4"
             style={{
@@ -585,7 +616,7 @@ export function WallSystemsShowcase({
           >
             <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition-colors" />
             <span className="relative z-10 text-white font-semibold text-xl tracking-wider drop-shadow-md">Cloud Installs</span>
-                    </div>
+          </div>
           <div
             className="cursor-pointer w-72 h-72 sm:w-80 sm:h-80 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-300 relative overflow-hidden flex items-end justify-center pb-4"
             style={{
@@ -601,6 +632,60 @@ export function WallSystemsShowcase({
             <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition-colors" />
             <span className="relative z-10 text-white font-semibold text-xl tracking-wider drop-shadow-md">Install Shorts</span>
           </div>
+          <div
+            className="cursor-pointer w-72 h-72 sm:w-80 sm:h-80 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-300 relative overflow-hidden flex items-end justify-center pb-4"
+            style={{
+              backgroundImage: `url('${wallInstallsImagesRaw[0]}')`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            onClick={() => {
+              setIsCloudInstallsTileModalOpen(false)
+              setIsWallInstallsGalleryOpen(true)
+            }}
+          >
+            <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition-colors" />
+            <span className="relative z-10 text-white font-semibold text-xl tracking-wider drop-shadow-md">Wall Installs</span>
+          </div>
+          <div
+            className="cursor-pointer w-72 h-72 sm:w-80 sm:h-80 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-300 relative overflow-hidden flex items-end justify-center pb-4"
+            style={{
+              backgroundImage: `url('${slatedInstallsImagesRaw[0]}')`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            onClick={() => {
+              setIsCloudInstallsTileModalOpen(false)
+              setIsSlatedInstallsGalleryOpen(true)
+            }}
+          >
+            <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition-colors" />
+            <span className="relative z-10 text-white font-semibold text-xl tracking-wider drop-shadow-md">Slated Installs</span>
+          </div>
+        </DialogContent>
+      </Dialog>
+      <Dialog open={isWallInstallsGalleryOpen} onOpenChange={setIsWallInstallsGalleryOpen}>
+        <DialogContent className="max-w-6xl h-[80vh] bg-transparent border-none p-0">
+          <CircularGallery
+            items={wallInstallsImages}
+            bend={0}
+            textColor="#ffffff"
+            font="bold 30px Poppins"
+            objectFit="contain"
+            itemScale={1.8}
+          />
+        </DialogContent>
+      </Dialog>
+      <Dialog open={isSlatedInstallsGalleryOpen} onOpenChange={setIsSlatedInstallsGalleryOpen}>
+        <DialogContent className="max-w-6xl h-[80vh] bg-transparent border-none p-0">
+          <CircularGallery
+            items={slatedInstallsImages}
+            bend={0}
+            textColor="#ffffff"
+            font="bold 30px Poppins"
+            objectFit="contain"
+            itemScale={1.8}
+          />
         </DialogContent>
       </Dialog>
       <VideoCarouselModal

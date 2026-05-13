@@ -654,7 +654,7 @@ export function WallSystemsShowcase({
         </DialogContent>
       </Dialog>
       <Dialog open={isCloudInstallsTileModalOpen} onOpenChange={setIsCloudInstallsTileModalOpen}>
-        <DialogContent className="max-w-4xl bg-transparent border-none p-0 shadow-none grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 justify-items-center items-center content-center max-h-screen overflow-y-auto">
+        <DialogContent className="max-w-7xl bg-transparent border-none p-0 shadow-none flex flex-col md:flex-row gap-6 justify-center items-center overflow-x-auto overflow-y-auto max-h-[90vh]">
           <div
             className="cursor-pointer w-72 h-72 sm:w-80 sm:h-80 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-300 relative overflow-hidden flex items-end justify-center pb-4"
             style={{

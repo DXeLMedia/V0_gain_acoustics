@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { LoadingScreen } from "@/components/loading-screen"
 import { Phone, Mail, ArrowRight, ChevronDown, Play, Volume2, Headphones, CheckCircle, Video, Camera } from "lucide-react"
+import Script from 'next/script'
 import { useEffect, useState, useRef } from "react"
 import { WallSystemsShowcase } from "@/components/wall-systems-showcase"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
@@ -338,6 +339,10 @@ export default function HomePage() {
                 </div>
                 <h3 className="heading-secondary text-2xl text-foreground">Pictures</h3>
               </div>
+            </div>
+            <div className="mt-16">
+              <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
+              <div className="elfsight-app-dd5476ac-773c-48bc-a230-6a162e24e9bc" data-elfsight-app-lazy></div>
             </div>
           </div>
         </section>

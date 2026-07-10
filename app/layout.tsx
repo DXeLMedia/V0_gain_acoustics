@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Poppins } from "next/font/google"
+import Script from "next/script"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 
@@ -30,6 +31,9 @@ export default function RootLayout({
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           {children}
+          {/* Elfsight WhatsApp Chat | GAS WhatsApp Chat */}
+          <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
+          <div className="elfsight-app-d5f516f3-fedb-4922-9248-10eb830fdf9b" data-elfsight-app-lazy></div>
         </ThemeProvider>
       </body>
     </html>

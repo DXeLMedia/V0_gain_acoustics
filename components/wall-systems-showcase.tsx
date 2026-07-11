@@ -95,6 +95,21 @@ const installShortsVideos = [
     iframeSrc: "https://drive.google.com/file/d/1wAfxKfQnq2IIVBbu5zRkLFkBOqHlaHOJ/preview",
     title: "Home Studio",
   },
+  {
+    id: "omilo",
+    iframeSrc: "https://drive.google.com/file/d/1nmpqZocJ9nXHBNhG48vs-zV5fgd0f-D7/preview",
+    title: "Omilo",
+  },
+  {
+    id: "reverb-test",
+    iframeSrc: "https://drive.google.com/file/d/1vgCtXm7gNNnD4xAM3pp8JUgM5XNstS8Q/preview",
+    title: "Reverb Test",
+  },
+  {
+    id: "dsm-install",
+    iframeSrc: "https://drive.google.com/file/d/1H6jwb-bIYGSzMfSpXtutAD6hT81Aenr_/preview",
+    title: "DSM Install",
+  },
 ]
 
 const cloudInstallsImagesRaw = [

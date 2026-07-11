@@ -110,6 +110,11 @@ const installShortsVideos = [
     iframeSrc: "https://drive.google.com/file/d/1H6jwb-bIYGSzMfSpXtutAD6hT81Aenr_/preview",
     title: "DSM Install",
   },
+  {
+    id: "d-one",
+    iframeSrc: "https://drive.google.com/file/d/1i0qQR24jFs4rSBhKUEuNCA92zBQDzqD8/preview",
+    title: "D-One",
+  },
 ]
 
 const cloudInstallsImagesRaw = [

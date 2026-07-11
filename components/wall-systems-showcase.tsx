@@ -122,6 +122,18 @@ const cloudInstallsImagesRaw = [
   "/CLOUD PANELS/IMG_9264.jpg",
   "/CLOUD PANELS/IMG_9270.jpg",
   "/CLOUD PANELS/de7db838-5c5e-4c5a-bfaf-2aeae8c72f2c.JPG",
+  "/CLOUD PANELS/IMG_1155.jpg",
+  "/CLOUD PANELS/IMG_1159.jpg",
+  "/CLOUD PANELS/IMG_1160.jpg",
+  "/CLOUD PANELS/IMG_1164.jpg",
+  "/CLOUD PANELS/IMG_2017.jpg",
+  "/CLOUD PANELS/IMG_2018.jpg",
+  "/CLOUD PANELS/IMG_2019.jpg",
+  "/CLOUD PANELS/IMG_2020.jpg",
+  "/CLOUD PANELS/IMG_2021.jpg",
+  "/CLOUD PANELS/IMG_2025.jpg",
+  "/CLOUD PANELS/IMG_2034.jpg",
+  "/CLOUD PANELS/IMG_2036.jpg",
 ]
 
 const slatWallImagesRaw = [

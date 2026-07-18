@@ -395,13 +395,8 @@ export default function HomePage() {
 
               <div className="p-8 rounded-2xl cascade-animate opacity-0 translate-y-[30px] stagger-2">
                 <h3 className="text-2xl font-bold text-foreground mb-6">Lets Connect!</h3>
-                <iframe
-                  aria-label="Let's Connect"
-                  frameBorder="0"
-                  allow="camera;"
-                  style={{ height: "500px", width: "99%", border: "none" }}
-                  src="https://forms.zohopublic.com/dxelmediagm1/form/ContactUs/formperma/UsUj4NJVoS6TglQhRRbg-yGCmns6e5iVzLy3Z5IuLEE?zf_enablecamera=true"
-                ></iframe>
+                <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
+                <div className="elfsight-app-0034bc0b-ebd8-40b8-bde6-43ced18587ab" data-elfsight-app-lazy></div>
               </div>
             </div>
           </div>
